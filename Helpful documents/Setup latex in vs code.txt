@@ -1,0 +1,7 @@
+Install VS Code
+
+Install LaTeX Workshop
+
+Install MikTeX. While installing this set Preferred paper to A4 and Install missing packages on the fly to Ask me first. Open MikTeX and click on check for updates and do update all the necessary packages.
+
+Install Strawberry Perl

@@ -1,0 +1,1731 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{lightgreen}{rgb}{0.56, 0.93, 0.56}  % or choose an RGB value you like
+
+% Set up the dark theme
+\lstset{
+    language=C++,               % Set language to C++
+    backgroundcolor=\color{black}, % Set background to black (dark theme)
+    basicstyle=\ttfamily\footnotesize\color{white}, % Use monospaced font with white color
+    keywordstyle=\color{cyan},   % Cyan for keywords to match GitHub style
+    commentstyle=\color{gray},   % Gray for comments
+    stringstyle=\color{lightgreen}, % Light green for strings
+    identifierstyle=\color{orange}, % Orange for identifiers (variables, functions)
+    numberstyle=\tiny\color{lightgreen}, % Line numbers in light green
+    numbersep=5pt,              % Space between code and line numbers
+    lineskip=0pt,               % No extra space between lines
+    showstringspaces=false,     % Don't highlight spaces in strings
+    breaklines=true,            % Enable line breaking
+    frame=none,                 % No frame around code
+    tabsize=4,                  % Set tab size to 4 spaces
+    escapeinside={\%*}{*)},     % Escape LaTeX syntax inside code
+    moredelim=*[l][\color{magenta}]{\%\%}, % Highlight custom comment with magenta
+}
+
+% Change the document background color and text color for dark mode
+\pagecolor{black}           % Set background to black for dark mode
+\color{white}               % Set text color to white
+
+\title{C++ Standard Template Library}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Vector (Dynamic Array)}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+vector<dataType> vectorName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+vector<int> vectorName = {1, 2, 3, 4}; // Initialization is optional
+\end{lstlisting}
+
+\begin{lstlisting}
+vector<int> vectorName(size, valueAtEveryIndex); // e.g., vector<int> vectorName(3, 10) creates a vector of size 3 with each element initialized to 10.
+\end{lstlisting}
+
+\begin{lstlisting}
+vector<int> vector1 = {1, 2, 3};
+vector<int> copyVector1(vector1);
+\end{lstlisting}
+
+\subsection{Description}
+
+A \texttt{vector}'s capacity doubles when it gets full. Data from the old vector is copied into a new vector that is double the size of the old vector.
+
+\noindent Vectors have two properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of elements currently present in the vector.
+    \item \textbf{Capacity}: The total number of elements a vector can hold before it needs to resize.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the vector.
+    \item \texttt{capacity()}: Returns the current capacity of the vector.
+    \item \texttt{push\_back(dataToBePushed)}: Adds an element to the end of the vector.
+    \item \texttt{pop\_back()}: Removes the last element of the vector.
+    \item \texttt{emplace\_back()}: Constructs an element in-place and adds it to the end of the vector (more efficient than \texttt{push\_back} for complex objects).
+    \item \texttt{at(indexNumber)}: Returns a reference to the element at the specified position.
+    \item \texttt{front()}: Returns a reference to the first element in the vector.
+    \item \texttt{back()}: Returns a reference to the last element in the vector.
+    \item \texttt{erase(startingIndex, endingIndex (optional))}: Removes elements in the specified range. The ending index is optional.
+    
+    \begin{lstlisting}
+    vectorName.erase(vectorName.begin() + indexNumber); // Removes element from a specified location
+    vectorName.erase(vectorName.begin() + indexNumber, vectorName.begin() + indexNumber); // Removes elements from a specified range
+    vectorName.erase(vectorName.begin(), vectorName.end()); // Removes all the elements
+    \end{lstlisting}
+
+    Note: The \texttt{erase()} function changes the size of the vector, not its capacity.
+
+    \item \texttt{insert(indexNumber, value)}: Inserts an element at the specified position.
+    \begin{lstlisting}
+    vectorName.insert(vectorName.begin() + indexNumber, value);
+    \end{lstlisting}
+
+    \item \texttt{clear()}: Removes all elements from the vector.
+    \item \texttt{empty()}: Returns a boolean value, 1 if the condition is true meaning the vector does not contain any elements, and 0 if the condition is false meaning the vector has some elements.
+
+    Note: The functions from 13 to 18 are known as vector iterators.
+
+    \item \texttt{begin()}: Returns an iterator to the first element of the vector.
+    
+    An iterator is an object that can be used like a pointer to traverse elements, but it isn't simply a raw pointer.
+    
+    \item \texttt{end()}: Returns an iterator to the element following the last element of the vector, which acts as a boundary.
+    
+    \textbf{Usage of iterator functions:}
+
+    \begin{lstlisting}
+    vector<int>::iterator i;
+    for(i = vectorName.begin(); i != vectorName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    for(vector<int>::iterator i = vectorName.begin(); i != vectorName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    for(auto i = vectorName.begin(); i != vectorName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \item \texttt{rbegin()}: Returns a reverse iterator to the last element of the vector.
+    \item \texttt{rend()}: Returns a reverse iterator to the element preceding the first element of the vector.
+    
+    \textbf{Usage of reverse iterator functions:}
+
+    \begin{lstlisting}
+    vector<int>::reverse_iterator i;
+    for(i = vectorName.rbegin(); i != vectorName.rend(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \item \texttt{cbegin()}: Returns a constant iterator to the first element of the vector.
+    \item \texttt{cend()}: Returns a constant iterator to the element following the last element of the vector.
+    
+    \textbf{Usage of constant iterator functions:}
+
+    \begin{lstlisting}
+    vector<int>::const_iterator i;
+    for(i = vectorName.cbegin(); i != vectorName.cend(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+\end{enumerate}
+
+\newpage
+\section{List}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+list<dataType> listName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+list<int> listName = {1, 2, 3, 4}; // Initialization is optional
+\end{lstlisting}
+
+\begin{lstlisting}
+list<int> listName(size, valueAtEveryIndex); // e.g., list<int> listName(3, 10) creates a list of size 3 with each element initialized to 10.
+\end{lstlisting}
+
+\begin{lstlisting}
+list<int> list1 = {1, 2, 3};
+list<int> copylist1(list1);
+\end{lstlisting}
+
+\subsection{Description}
+
+List is implemented as a doubly linked list.
+
+\noindent Lists have two properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of elements currently present in the list.
+    \item \textbf{Capacity}: Lists do not have a capacity in the same way vectors do, as elements are dynamically allocated when needed, and they can grow and shrink as required.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the list.
+    \item \texttt{push\_front(dataToBePushed)}: Adds an element to the front of the list.
+    \item \texttt{pop\_front()}: Removes the first element of the list.
+    \item \texttt{emplace\_front()}: Constructs an element in-place and adds it to the front of the list (more efficient than \texttt{push\_front} for complex objects).
+    \item \texttt{push\_back(dataToBePushed)}: Adds an element to the end of the list.
+    \item \texttt{pop\_back()}: Removes the last element of the list.
+    \item \texttt{emplace\_back()}: Constructs an element in-place and adds it to the end of the list (more efficient than \texttt{push\_back} for complex objects).
+    \item \texttt{front()}: Returns a reference to the first element in the list.
+    \item \texttt{back()}: Returns a reference to the last element in the list.
+    \item \texttt{erase(startingIndex, endingIndex (optional))}: Removes elements in the specified range. The ending index is optional.
+    
+    \begin{lstlisting}
+    listName.erase(listName.begin() + indexNumber); // Removes element from a specified location
+    listName.erase(listName.begin() + indexNumber, listName.begin() + indexNumber); // Removes elements from a specified range
+    listName.erase(listName.begin(), listName.end()); // Removes all the elements
+    \end{lstlisting}
+
+    Note: The \texttt{erase()} function changes the size of the list, not its capacity.
+
+    \item \texttt{insert(indexNumber, value)}: Inserts an element at the specified position.
+    \begin{lstlisting}
+    listName.insert(listName.begin() + indexNumber, value);
+    \end{lstlisting}
+
+    \item \texttt{clear()}: Removes all elements from the list. This is an efficient operation for lists, as they do not require reallocation like vectors.
+    \item \texttt{empty()}: Returns a boolean value, 1 if the condition is true meaning the list does not contain any elements, and 0 if the condition is false meaning the list has some elements.
+
+    Note:The functions from 13 to 18 are known as list iterators.
+
+    \item \texttt{begin()}: Returns an iterator to the first element of the list. Lists support bidirectional iteration, allowing you to traverse both forward and backward.
+    
+    An iterator is an object that can be used like a pointer to traverse elements, but it isn't simply a raw pointer.
+    
+    \item \texttt{end()}: Returns an iterator to the element following the last element of the list, which acts as a boundary.
+    
+    \textbf{Usage of iterator functions:}
+
+    \begin{lstlisting}
+    list<int>::iterator i;
+    for(i = listName.begin(); i != listName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    for(list<int>::iterator i = listName.begin(); i != listName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    for(auto i = listName.begin(); i != listName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \item \texttt{rbegin()}: Returns a reverse iterator to the last element of the list.
+    \item \texttt{rend()}: Returns a reverse iterator to the element preceding the first element of the list.
+    
+    \textbf{Usage of reverse iterator functions:}
+
+    \begin{lstlisting}
+    list<int>::reverse_iterator i;
+    for(i = listName.rbegin(); i != listName.rend(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \item \texttt{cbegin()}: Returns a constant iterator to the first element of the list.
+    \item \texttt{cend()}: Returns a constant iterator to the element following the last element of the list.
+    
+    \textbf{Usage of constant iterator functions:}
+
+    \begin{lstlisting}
+    list<int>::const_iterator i;
+    for(i = listName.cbegin(); i != listName.cend(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+\end{enumerate}
+
+\newpage
+\section{Deque}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+deque<dataType> dequeName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+deque<int> dequeName = {1, 2, 3, 4}; // Initialization is optional
+\end{lstlisting}
+
+\begin{lstlisting}
+deque<int> dequeName(size, valueAtEveryIndex); // e.g., deque<int> dequeName(3, 10) creates a deque of size 3 with each element initialized to 10.
+\end{lstlisting}
+
+\begin{lstlisting}
+deque<int> deque1 = {1, 2, 3};
+deque<int> copyDeque1(deque1);
+\end{lstlisting}
+
+\subsection{Description}
+
+Deque (double-ended queue) is a sequence container that allows fast insertions and deletions at both the beginning and the end. It is implemented using dynamic array.
+
+\noindent Deques have two properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of elements currently present in the deque.
+    \item \textbf{Dynamic Growth}: Deques grow dynamically as needed, but this is managed internally and does not have a "capacity" function. Unlike vectors, deques don't guarantee a contiguous block of memory.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the deque.
+    \item push\_front(dataToBePushed): Adds an element to the front of the deque.
+    \item \texttt{pop\_front()}: Removes the first element of the deque.
+    \item \texttt{push\_back(dataToBePushed)}: Adds an element to the end of the deque.
+    \item \texttt{pop\_back()}: Removes the last element of the deque.
+    \item \texttt{front()}: Returns a reference to the first element in the deque.
+    \item \texttt{back()}: Returns a reference to the last element in the deque.
+    \item \texttt{operator[]}: Allows direct access to elements at a specified index. Does not check for out-of-bounds access.
+    \begin{lstlisting}
+    cout << dequeName[2];  // Outputs the element at index 2
+    \end{lstlisting}
+    \item \texttt{at()}: Allows access to elements at a specified index with bounds checking. Throws \texttt{std::out\_of\_range} exception if the index is invalid.
+    \begin{lstlisting}
+    cout << dequeName.at(2);  // Outputs the element at index 2
+    try {
+        cout << dequeName.at(10);  // Throws out_of_range exception
+    } catch (const std::out_of_range& e) {
+        cout << e.what();  // Catching exception
+    }
+    \end{lstlisting}
+    \item \texttt{insert(indexNumber, value)}: Inserts an element at the specified position in the deque.
+    \begin{lstlisting}
+    dequeName.insert(dequeName.begin() + indexNumber, value);
+    \end{lstlisting}
+    \item \texttt{erase(startingIndex, endingIndex (optional))}: Removes elements in the specified range. The ending index is optional.
+    \begin{lstlisting}
+    dequeName.erase(dequeName.begin() + indexNumber); // Removes element from a specified location
+    dequeName.erase(dequeName.begin() + startIndex, dequeName.begin() + endIndex); // Removes elements from a specified range
+    dequeName.erase(dequeName.begin(), dequeName.end()); // Removes all the elements
+    \end{lstlisting}
+    
+    Note: The \texttt{erase()} function changes the size of the deque, not its capacity.
+
+    \item \texttt{clear()}: Removes all elements from the deque. This operation does not require reallocation like vectors.
+    \item \texttt{empty()}: Returns a boolean value: 1 if the deque is empty, and 0 if it contains elements.
+
+    \item \texttt{begin()}: Returns an iterator to the first element of the deque. Deques support bidirectional iteration, allowing you to traverse both forward and backward.
+    
+    An iterator is an object that can be used like a pointer to traverse elements, but it isn't simply a raw pointer.
+    
+    \item \texttt{end()}: Returns an iterator to the element following the last element of the deque, which acts as a boundary.
+    
+    \textbf{Usage of iterator functions:}
+
+    \begin{lstlisting}
+    deque<int>::iterator i;
+    for(i = dequeName.begin(); i != dequeName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    for(deque<int>::iterator i = dequeName.begin(); i != dequeName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    for(auto i = dequeName.begin(); i != dequeName.end(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \item \texttt{rbegin()}: Returns a reverse iterator to the last element of the deque.
+    \item \texttt{rend()}: Returns a reverse iterator to the element preceding the first element of the deque.
+    
+    \textbf{Usage of reverse iterator functions:}
+
+    \begin{lstlisting}
+    deque<int>::reverse_iterator i;
+    for(i = dequeName.rbegin(); i != dequeName.rend(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+    \item \texttt{cbegin()}: Returns a constant iterator to the first element of the deque.
+    \item \texttt{cend()}: Returns a constant iterator to the element following the last element of the deque.
+    
+    \textbf{Usage of constant iterator functions:}
+
+    \begin{lstlisting}
+    deque<int>::const_iterator i;
+    for(i = dequeName.cbegin(); i != dequeName.cend(); i++) {
+        cout << *(i) << endl;
+    }
+    \end{lstlisting}
+
+\end{enumerate}
+
+\newpage
+\section{Pair}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+pair<dataType1, dataType2> pairName;
+\end{lstlisting}
+
+\begin{lstlisting}
+pair<int, string> pairName = {1, "apple"}; // Initialization with values
+\end{lstlisting}
+
+\begin{lstlisting}
+pair<int, string> pair1 = {1, "apple"};
+
+pair<int, string> pair2(pair1);  // Copy initialization
+\end{lstlisting}
+
+\subsection{Description}
+
+A \texttt{pair} is a simple container in C++ that holds exactly two elements. These elements can be of different types, making \texttt{pair} useful for storing related data, such as key-value pairs in a map or two coordinates.
+
+\noindent Pairs have the following characteristics:
+\begin{itemize}
+    \item \textbf{First Element}: The first element of the pair, accessible via \texttt{first}.
+    \item \textbf{Second Element}: The second element of the pair, accessible via \texttt{second}.
+    \item \textbf{Lexicographical Comparison}: Pairs can be compared lexicographically, meaning the first element is compared first, and if equal, the second element is compared.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{first}: Accesses the first element of the pair.
+    \begin{lstlisting}
+    pair<int, string> p = {1, "apple"};
+    cout << p.first;  // Outputs: 1
+    \end{lstlisting}
+    
+    \item \texttt{second}: Accesses the second element of the pair.
+    \begin{lstlisting}
+    cout << p.second;  // Outputs: "apple"
+    \end{lstlisting}
+
+    \item \texttt{make\_pair(value1, value2)}: Creates and returns a pair initialized with \texttt{value1} and \texttt{value2}.
+    \begin{lstlisting}
+    auto p = make_pair(10, "banana");  // Creates a pair <int, string>
+    cout << p.first << ", " << p.second;  // Outputs: 10, banana
+    \end{lstlisting}
+
+    \item Comparison Operators (\texttt{==}, \texttt{!=}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}): Compares two pairs lexicographically, starting with the first element and then comparing the second if the first is equal.
+    \begin{lstlisting}
+    pair<int, string> p1 = {1, "apple"};
+    pair<int, string> p2 = {2, "banana"};
+    cout << (p1 < p2);  // Outputs: 1 (true, since 1 < 2)
+    \end{lstlisting}
+    
+    \item \texttt{swap(pair1, pair2)}: Swaps the contents of two pairs.
+    \begin{lstlisting}
+    pair<int, string> p1 = {1, "apple"};
+    pair<int, string> p2 = {2, "banana"};
+    swap(p1, p2);
+    cout << p1.first << ", " << p1.second;  // Outputs: 2, banana
+    cout << p2.first << ", " << p2.second;  // Outputs: 1, apple
+    \end{lstlisting}
+
+    \item \texttt{tie(variable1, variable2)}: Unpacks the pair into separate variables.
+    \begin{lstlisting}
+    pair<int, string> p = {10, "apple"};
+    int x;
+    string y;
+    tie(x, y) = p;
+    cout << x << ", " << y;  // Outputs: 10, apple
+    \end{lstlisting}
+
+    \item \texttt{get<N>(pairName)}: Accesses the \texttt{N}-th element (where \texttt{N} is either 0 or 1) of the pair.
+    \begin{lstlisting}
+    pair<int, string> p = {1, "apple"};
+    cout << get<0>(p);  // Outputs: 1 (first element)
+    cout << get<1>(p);  // Outputs: "apple" (second element)
+    \end{lstlisting}
+
+    \item \texttt{const} pairs: Declares a pair as constant so that its values cannot be modified.
+    \begin{lstlisting}
+    const pair<int, string> p = {1, "apple"};
+    // p.first = 2;   // Error: cannot modify a const pair
+    \end{lstlisting}
+    
+    \item \texttt{pair} in \texttt{std::map} or \texttt{std::unordered\_map}: Used to represent key-value pairs in these containers.
+    \begin{lstlisting}
+    std::map<int, string> myMap;
+    myMap[1] = "apple";
+    myMap[2] = "banana";
+    for (const auto& p : myMap) {
+        cout << p.first << ": " << p.second << endl;
+    }
+    // Outputs:
+    // 1: apple
+    // 2: banana
+    \end{lstlisting}
+
+    \item Sorting Pairs: Sorting based on either the first or second element.
+    
+    \textbf{Using \texttt{std::sort()}} to sort pairs:
+    \begin{lstlisting}
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+
+    using namespace std;
+
+    int main() {
+        vector<pair<int, string>> v = {{2, "banana"}, {1, "apple"}, {3, "cherry"}};
+
+        // Sorting by the first element (default behavior)
+        sort(v.begin(), v.end());
+        for (const auto& p : v) {
+            cout << p.first << ": " << p.second << endl;
+        }
+        // Outputs: 
+        // 1: apple
+        // 2: banana
+        // 3: cherry
+    }
+    \end{lstlisting}
+
+    \textbf{Custom Sorting by the Second Element}:
+    To sort pairs based on the second element, you can provide a custom comparator.
+
+    \begin{lstlisting}
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+
+    using namespace std;
+
+    bool compareBySecond(const pair<int, string>& p1, const pair<int, string>& p2) {
+        return p1.second < p2.second;  // Sorts based on the second element (alphabetically)
+    }
+
+    int main() {
+        vector<pair<int, string>> v = {{2, "banana"}, {1, "apple"}, {3, "cherry"}};
+
+        // Sorting by the second element using custom comparator
+        sort(v.begin(), v.end(), compareBySecond);
+        for (const auto& p : v) {
+            cout << p.first << ": " << p.second << endl;
+        }
+        // Outputs: 
+        // 1: apple
+        // 3: cherry
+        // 2: banana
+    }
+    \end{lstlisting}
+
+    \textbf{Sorting in Descending Order with \texttt{std::greater<int>}}:
+
+    The \texttt{std::greater<int>} comparator can be used to sort in descending order, either based on the first element of the pair or the second.
+
+    - Sort by First Element (Descending):
+    \begin{lstlisting}
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+    #include <functional>  // For std::greater
+
+    using namespace std;
+
+    int main() {
+        vector<pair<int, string>> v = {{2, "banana"}, {1, "apple"}, {3, "cherry"}};
+
+        // Sorting by the first element in descending order
+        sort(v.begin(), v.end(), greater<pair<int, string>>());
+        for (const auto& p : v) {
+            cout << p.first << ": " << p.second << endl;
+        }
+        // Outputs:
+        // 3: cherry
+        // 2: banana
+        // 1: apple
+    }
+    \end{lstlisting}
+
+    - Sort by Second Element (Descending):
+    You can also use `std::greater` to sort based on the second element of the pair.
+
+    \begin{lstlisting}
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+    #include <functional>  // For std::greater
+
+    using namespace std;
+
+    bool compareBySecondGreater(const pair<int, string>& p1, const pair<int, string>& p2) {
+        return p1.second > p2.second;  // Sorts based on the second element in descending order
+    }
+
+    int main() {
+        vector<pair<int, string>> v = {{2, "banana"}, {1, "apple"}, {3, "cherry"}};
+
+        // Sorting by the second element in descending order
+        sort(v.begin(), v.end(), compareBySecondGreater);
+        for (const auto& p : v) {
+            cout << p.first << ": " << p.second << endl;
+        }
+        // Outputs: 
+        // 2: banana
+        // 3: cherry
+        // 1: apple
+    }
+    \end{lstlisting}
+
+    \item \texttt{push\_back() vs emplace\_back() in vector pair}: emplace\_back function creates an object by itself and insert it but we have to create an object while using push\_back().
+    \begin{lstlisting}
+    vector<pair<int, int>> vectorName = {{1,2}, {6,5}, {7,4}, {3,2}};
+    vectorName.push_back({8, 9});
+    vectorName.emplace_back({3, 9});
+    \end{lstlisting}
+\end{enumerate}
+
+\newpage
+\section{Stack}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+stack<dataType> stackName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+stack<int> stackName = {1, 2, 3, 4}; // Initialization is optional
+\end{lstlisting}
+
+\begin{lstlisting}
+stack<int> stackName; // Create an empty stack
+\end{lstlisting}
+
+\begin{lstlisting}
+stack<int> stackName; // Create an empty stack, no initialization
+stackName.push(10);  // Push elements onto the stack
+stackName.push(20);
+\end{lstlisting}
+
+\subsection{Description}
+
+A stack is a container adapter that follows the \textbf{Last In, First Out (LIFO)} principle. Elements can only be added or removed from the top of the stack.
+
+\noindent Stacks are typically implemented using deques or dynamic arrays under the hood. In C++, the \texttt{stack} container adapter does not expose the underlying container, and only specific operations are available.
+\noindent Stacks have two primary properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of elements currently present in the stack.
+    \item \textbf{Dynamic Growth}: Stacks grow dynamically as elements are pushed onto them. The underlying container manages memory allocation automatically, but the stack itself does not provide visibility into or control over the memory structure (e.g., it does not have a "capacity" function).
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the stack.
+    \item \texttt{push(dataToBePushed)}: Adds an element to the top of the stack.
+    \begin{lstlisting}
+    stackName.push(10);  // Adds 10 to the top of the stack
+    \end{lstlisting}
+    \item \texttt{pop()}: Removes the element from the top of the stack.
+    \begin{lstlisting}
+    stackName.pop();  // Removes the top element of the stack
+    \end{lstlisting}
+    \item \texttt{top()}: Returns a reference to the element at the top of the stack.
+    \begin{lstlisting}
+    cout << stackName.top();  // Outputs the element at the top of the stack
+    \end{lstlisting}
+    \item \texttt{empty()}: Returns a boolean value: \texttt{true} if the stack is empty, \texttt{false} otherwise.
+    \begin{lstlisting}
+    if (stackName.empty()) {
+        cout << "Stack is empty" << endl;
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: The \texttt{stack} container adapter does not have a \texttt{clear()} function. To clear a stack, you must pop elements one by one or recreate the stack object.
+    \item \texttt{swap(otherStack)}: Swaps the contents of the current stack with another stack of the same type.
+    \begin{lstlisting}
+    stack<int> stack1, stack2;
+    stack1.push(10);
+    stack2.push(20);
+    stack1.swap(stack2);  // Swaps the contents of stack1 and stack2
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> stackName;
+    
+    // Push elements onto the stack
+    stackName.push(5);
+    stackName.push(10);
+    stackName.push(15);
+    
+    // Access the top element
+    cout << "Top element: " << stackName.top() << endl; // Outputs: 15
+    
+    // Pop the top element
+    stackName.pop();
+    cout << "Top after pop: " << stackName.top() << endl; // Outputs: 10
+    
+    // Check if the stack is empty
+    if (stackName.empty()) {
+        cout << "Stack is empty" << endl;
+    } else {
+        cout << "Stack is not empty" << endl;
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Important Notes}
+
+\begin{itemize}
+    \item \textbf{LIFO Principle}: Stacks follow the \textbf{Last In, First Out} principle, meaning the last element added is the first one to be removed.
+    \item \textbf{Access}: Stacks only allow access to the top element using the \texttt{top()} function. It does not provide direct access to other elements within the stack.
+    \item \textbf{Internal Container}: By default, stacks in C++ are implemented using deques, but this is abstracted away from the user. You cannot directly access or manipulate the underlying container.
+\end{itemize}
+
+\newpage
+\section{Queue}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+queue<dataType> queueName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+queue<int> queueName = {1, 2, 3, 4}; // Initialization is optional
+\end{lstlisting}
+
+\begin{lstlisting}
+queue<int> queueName; // Create an empty queue
+\end{lstlisting}
+
+\subsection{Description}
+
+A queue is a container adapter that follows the \textbf{First In, First Out (FIFO)} principle. Elements are added at the back (or rear) and removed from the front. In a queue, the first element added is the first to be removed.
+
+\noindent Like stacks, queues are typically implemented using deques or dynamic arrays, but the operations available are restricted to enqueueing and dequeueing elements from opposite ends of the container.
+\noindent Queues have two primary properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of elements currently present in the queue.
+    \item \textbf{Dynamic Growth}: Queues grow dynamically as elements are pushed onto them. The underlying container manages memory allocation automatically, but the queue itself does not provide visibility into or control over the memory structure (e.g., it does not have a "capacity" function).
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the queue.
+    \item \texttt{push(dataToBePushed)}: Adds an element to the back (rear) of the queue.
+    \begin{lstlisting}
+    queueName.push(10);  // Adds 10 to the back of the queue
+    \end{lstlisting}
+    \item \texttt{pop()}: Removes the front (first) element from the queue.
+    \begin{lstlisting}
+    queueName.pop();  // Removes the front element of the queue
+    \end{lstlisting}
+    \item \texttt{front()}: Returns a reference to the front (first) element of the queue.
+    \begin{lstlisting}
+    cout << queueName.front();  // Outputs the element at the front of the queue
+    \end{lstlisting}
+    \item \texttt{back()}: Returns a reference to the back (last) element of the queue.
+    \begin{lstlisting}
+    cout << queueName.back();  // Outputs the element at the back of the queue
+    \end{lstlisting}
+    \item \texttt{empty()}: Returns a boolean value: \texttt{true} if the queue is empty, \texttt{false} otherwise.
+    \begin{lstlisting}
+    if (queueName.empty()) {
+        cout << "Queue is empty" << endl;
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: The \texttt{queue} container adapter does not have a \texttt{clear()} function. To clear a queue, you must pop elements one by one or recreate the queue object.
+    \item \texttt{swap(otherQueue)}: Swaps the contents of the current queue with another queue of the same type.
+    \begin{lstlisting}
+    queue<int> queue1, queue2;
+    queue1.push(10);
+    queue2.push(20);
+    queue1.swap(queue2);  // Swaps the contents of queue1 and queue2
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<int> queueName;
+    
+    // Push elements onto the queue
+    queueName.push(5);
+    queueName.push(10);
+    queueName.push(15);
+    
+    // Access the front element
+    cout << "Front element: " << queueName.front() << endl; // Outputs: 5
+    
+    // Pop the front element
+    queueName.pop();
+    cout << "Front after pop: " << queueName.front() << endl; // Outputs: 10
+    
+    // Access the back element
+    cout << "Back element: " << queueName.back() << endl; // Outputs: 15
+    
+    // Check if the queue is empty
+    if (queueName.empty()) {
+        cout << "Queue is empty" << endl;
+    } else {
+        cout << "Queue is not empty" << endl;
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Important Notes}
+
+\begin{itemize}
+    \item \textbf{FIFO Principle}: Queues follow the \textbf{First In, First Out} principle, meaning the first element added is the first one to be removed.
+    \item \textbf{Access}: Queues allow access only to the front and back elements using the \texttt{front()} and \texttt{back()} functions. It does not allow direct access to other elements within the queue.
+    \item \textbf{Internal Container}: By default, queues are implemented using deques or dynamic arrays, but this is abstracted away from the user. You cannot directly access or manipulate the underlying container.
+\end{itemize}
+
+\newpage
+\section{Priority Queue}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+priority_queue<dataType> priorityQueueName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+priority_queue<int> priorityQueueName = {10, 20, 30, 40}; // Initialization is optional
+\end{lstlisting}
+
+\begin{lstlisting}
+priority_queue<int> priorityQueueName; // Create an empty priority queue
+\end{lstlisting}
+
+\subsection{Description}
+
+A priority queue is a container adapter that operates based on the \textbf{priority} of its elements. It is a specialized type of queue where elements are dequeued in order of their priority, not in the order they were enqueued. The element with the highest priority is always at the top and is removed first.
+
+\noindent By default, in a C++ priority queue, the largest element is given the highest priority (using the `std::less` comparison). However, you can also customize the priority order by using a comparison function.
+
+\noindent Priority queues are typically implemented using a binary heap (often a max heap by default). The underlying container is usually a vector, but this is abstracted from the user.
+
+\noindent Priority queues have two primary properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of elements currently present in the priority queue.
+    \item \textbf{Dynamic Growth}: Priority queues grow dynamically as elements are pushed onto them. The underlying container manages memory allocation automatically, but the priority queue itself does not provide visibility into or control over the memory structure (e.g., it does not have a "capacity" function).
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the priority queue.
+    \item \texttt{push(dataToBePushed)}: Adds an element to the priority queue.
+    \begin{lstlisting}
+    priorityQueueName.push(10);  // Adds 10 to the priority queue
+    \end{lstlisting}
+    \item \texttt{pop()}: Removes the highest-priority element from the priority queue (the top element).
+    \begin{lstlisting}
+    priorityQueueName.pop();  // Removes the highest-priority element from the queue
+    \end{lstlisting}
+    \item \texttt{top()}: Returns a reference to the highest-priority element in the priority queue.
+    \begin{lstlisting}
+    cout << priorityQueueName.top();  // Outputs the highest-priority element in the queue
+    \end{lstlisting}
+    \item \texttt{empty()}: Returns a boolean value: \texttt{true} if the priority queue is empty, \texttt{false} otherwise.
+    \begin{lstlisting}
+    if (priorityQueueName.empty()) {
+        cout << "Priority queue is empty" << endl;
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: The \texttt{priority\_queue} container adapter does not have a \texttt{clear()} function. To clear a priority queue, you must pop elements one by one or recreate the priority queue object.
+    \item \texttt{swap(otherPriorityQueue)}: Swaps the contents of the current priority queue with another priority queue of the same type.
+    \begin{lstlisting}
+    priority_queue<int> priorityQueue1, priorityQueue2;
+    priorityQueue1.push(10);
+    priorityQueue2.push(20);
+    priorityQueue1.swap(priorityQueue2);  // Swaps the contents of priorityQueue1 and priorityQueue2
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    priority_queue<int> priorityQueueName;
+    
+    // Push elements onto the priority queue
+    priorityQueueName.push(5);
+    priorityQueueName.push(10);
+    priorityQueueName.push(15);
+    
+    // Access the highest-priority element
+    cout << "Top element: " << priorityQueueName.top() << endl; // Outputs: 15
+    
+    // Pop the highest-priority element
+    priorityQueueName.pop();
+    cout << "Top after pop: " << priorityQueueName.top() << endl; // Outputs: 10
+    
+    // Check if the priority queue is empty
+    if (priorityQueueName.empty()) {
+        cout << "Priority queue is empty" << endl;
+    } else {
+        cout << "Priority queue is not empty" << endl;
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Important Notes}
+
+\begin{itemize}
+    \item \textbf{Priority Order}: In a priority queue, the highest-priority element (as defined by the comparator) is always at the top. By default, `std::greater` is used to create a max heap, meaning the largest element is given the highest priority. You can also use custom comparators for other priority orders (e.g., min-heap).
+    \item \textbf{Access}: The priority queue allows access only to the highest-priority element using the \texttt{top()} function. It does not allow direct access to other elements within the queue.
+    \item \textbf{Internal Container}: By default, priority queues are implemented using a heap-based container (usually a `std::vector`), but the implementation details are abstracted away from the user.
+\end{itemize}
+
+\subsection{Custom Comparator Example}
+
+If you want a min-heap priority queue (where the smallest element has the highest priority), you can provide a custom comparator. Here's how to do it:
+
+\begin{lstlisting}
+#include <iostream>
+#include <queue>
+using namespace std;
+
+// Custom comparator for min-heap
+struct Compare {
+    bool operator()(int a, int b) {
+        return a > b; // Swap comparison to make it a min-heap
+    }
+};
+
+int main() {
+    // Declare a priority queue with a custom comparator
+    priority_queue<int, vector<int>, Compare> minHeap;
+    
+    minHeap.push(10);
+    minHeap.push(20);
+    minHeap.push(5);
+    
+    // Access the top element (which is the smallest in min-heap)
+    cout << "Top element (min-heap): " << minHeap.top() << endl; // Outputs: 5
+    
+    return 0;
+}
+\end{lstlisting}
+
+\section{Map}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+map<keyType, valueType> mapName; 
+\end{lstlisting}
+
+\begin{lstlisting}
+map<int, string> mapName = {{1, "apple"}, {2, "banana"}}; // Initialization with pairs
+\end{lstlisting}
+
+\begin{lstlisting}
+map<int, string> mapName; // Create an empty map
+\end{lstlisting}
+
+\subsection{Description}
+
+A map is an associative container that stores key-value pairs in a sorted order. Each element in a map is a pair consisting of a key and a value, where the key is unique. In a map, the keys are automatically sorted according to the key type's comparison function (by default, using the `operator<`).
+
+\noindent The main purpose of a map is to associate a unique key with a specific value and to provide fast access to the value using the key.
+
+\noindent Maps have two primary properties:
+\begin{itemize}
+    \item \textbf{Size}: The number of key-value pairs currently present in the map.
+    \item \textbf{Sorted Order}: The elements in the map are stored in sorted order based on the key. The sorting order is determined by the key's comparison function (default is `operator<`).
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of key-value pairs in the map.
+    \item \texttt{insert(pair)}: Adds a key-value pair to the map. If the key already exists, the pair will not be inserted.
+    \begin{lstlisting}
+    mapName.insert({1, "apple"});  // Adds a key-value pair to the map
+    \end{lstlisting}
+    \item \texttt{erase(key)}: Removes the key-value pair with the specified key.
+    \begin{lstlisting}
+    mapName.erase(1);  // Removes the pair with key 1
+    \end{lstlisting}
+    \item \texttt{find(key)}: Returns an iterator to the element with the specified key. If the key is not found, it returns \texttt{mapName.end()}.
+    \begin{lstlisting}
+    auto it = mapName.find(1);  // Find element with key 1
+    if (it != mapName.end()) {
+        cout << it->second << endl;  // Access value using iterator
+    }
+    \end{lstlisting}
+    \item \texttt{at(key)}: Returns a reference to the value associated with the specified key. Throws \texttt{std::out\_of\_range} exception if the key is not found.
+    \begin{lstlisting}
+    cout << mapName.at(1);  // Outputs the value associated with key 1
+    try {
+        cout << mapName.at(10);  // Throws out_of_range exception
+    } catch (const std::out_of_range& e) {
+        cout << e.what();  // Catching exception
+    }
+    \end{lstlisting}
+    \item \texttt{operator[]}: Allows direct access to the value associated with the key. If the key does not exist, it will insert a default value for that key.
+    \begin{lstlisting}
+    cout << mapName[1];  // Outputs the value associated with key 1
+    mapName[2] = "orange";  // Adds or updates the value for key 2
+    \end{lstlisting}
+    \item \texttt{empty()}: Returns a boolean value: \texttt{true} if the map is empty, \texttt{false} otherwise.
+    \begin{lstlisting}
+    if (mapName.empty()) {
+        cout << "Map is empty" << endl;
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: Removes all elements from the map.
+    \begin{lstlisting}
+    mapName.clear();  // Clears all elements in the map
+    \end{lstlisting}
+    \item \texttt{swap(otherMap)}: Swaps the contents of the current map with another map of the same type.
+    \begin{lstlisting}
+    map<int, string> map1, map2;
+    map1.insert({1, "apple"});
+    map2.insert({2, "banana"});
+    map1.swap(map2);  // Swaps the contents of map1 and map2
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    map<int, string> mapName;
+    
+    // Insert key-value pairs into the map
+    mapName.insert({1, "apple"});
+    mapName.insert({2, "banana"});
+    mapName[3] = "cherry";  // Another way to insert key-value pair
+    
+    // Access and print value associated with a specific key
+    cout << "Value associated with key 2: " << mapName[2] << endl;  // Outputs: banana
+    
+    // Access value using the 'at()' function
+    try {
+        cout << "Value at key 3: " << mapName.at(3) << endl;  // Outputs: cherry
+    } catch (const std::out_of_range& e) {
+        cout << e.what();
+    }
+    
+    // Find a key in the map
+    auto it = mapName.find(1);
+    if (it != mapName.end()) {
+        cout << "Found key 1, value: " << it->second << endl;  // Outputs: apple
+    }
+    
+    // Erase a key-value pair
+    mapName.erase(2);  // Removes pair with key 2
+    cout << "Map size after erase: " << mapName.size() << endl;  // Outputs: 2
+    
+    // Check if map is empty
+    if (mapName.empty()) {
+        cout << "Map is empty" << endl;
+    } else {
+        cout << "Map is not empty" << endl;
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+\section{Multimap}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+multimap<keyType, valueType> multimapName;
+\end{lstlisting}
+
+\begin{lstlisting}
+multimap<int, string> multimapName = {{1, "apple"}, {1, "banana"}, {2, "cherry"}}; // Initialization
+\end{lstlisting}
+
+\subsection{Description}
+
+A `multimap` is an associative container that stores key-value pairs in a sorted order. Unlike a `map`, multiple elements in a `multimap` can have the same key.
+
+\noindent The main purpose of a `multimap` is to allow duplicate keys while maintaining sorted order of the elements.
+
+\noindent Properties of a `multimap`:
+\begin{itemize}
+    \item \textbf{Duplicate Keys}: Multiple elements can have the same key.
+    \item \textbf{Sorted Order}: The elements in the `multimap` are stored in sorted order based on the key.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of key-value pairs in the multimap.
+    \item \texttt{insert(pair)}: Adds a key-value pair to the multimap.
+    \begin{lstlisting}
+    multimapName.insert({1, "apple"});  // Adds a key-value pair
+    \end{lstlisting}
+    \item \texttt{find(key)}: Returns an iterator to the first element with the specified key. If the key is not found, it returns \texttt{multimapName.end()}.
+    \begin{lstlisting}
+    auto it = multimapName.find(1);  // Find first element with key 1
+    if (it != multimapName.end()) {
+        cout << it->second << endl;  // Access value using iterator
+    }
+    \end{lstlisting}
+    \item \texttt{erase(key)}: Removes all pairs with the specified key.
+    \begin{lstlisting}
+    multimapName.erase(1);  // Removes all pairs with key 1
+    \end{lstlisting}
+    Using the `erase` function with an iterator will only remove the specific element pointed to by the iterator, rather than all elements with the same key. Here's an example:
+    \begin{lstlisting}
+    std::multimap<int, std::string> multiMap = {
+        {1, "A"},
+        {1, "B"},
+        {2, "C"}
+    };
+
+    auto it = multiMap.find(1);  // Find the first element with key 1
+    multiMap.erase(it);  // Removes the first element with key 1
+
+    for (const auto& pair : multiMap) {
+        std::cout << pair.first << " " << pair.second << std::endl;
+    }
+    
+    /*
+    Outputs
+    
+    1 B
+    2 C
+    */
+    \end{lstlisting}
+    \item \texttt{equal\_range(key)}: Returns a pair of iterators representing the range of elements with the specified key.
+    \begin{lstlisting}
+    auto range = multimapName.equal_range(1);
+    for (auto it = range.first; it != range.second; ++it) {
+        cout << it->second << endl;
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: Removes all elements from the multimap.
+    \begin{lstlisting}
+    multimapName.clear();  // Clears all elements
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    multimap<int, string> multimapName;
+    
+    // Insert key-value pairs
+    multimapName.insert({1, "apple"});
+    multimapName.insert({1, "banana"});
+    multimapName.insert({2, "cherry"});
+    
+    // Access all values with the same key
+    auto range = multimapName.equal_range(1);
+    cout << "Values with key 1:" << endl;
+    for (auto it = range.first; it != range.second; ++it) {
+        cout << it->second << endl;
+    }
+    
+    // Check size
+    cout << "Multimap size: " << multimapName.size() << endl;  // Outputs: 3
+    
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+\section{Unordered Map}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+unordered_map<keyType, valueType> unorderedMapName;
+\end{lstlisting}
+
+\begin{lstlisting}
+unordered_map<int, string> unorderedMapName = {{1, "apple"}, {2, "banana"}}; // Initialization
+\end{lstlisting}
+
+\subsection{Description}
+
+An `unordered\_map` is an associative container that stores key-value pairs in an unordered fashion using a hash table. Each key in the `unordered\_map` is unique.
+
+\noindent Properties of an `unordered\_map`:
+\begin{itemize}
+    \item \textbf{Unordered Storage}: Elements are not stored in any particular order.
+    \item \textbf{Unique Keys}: Each key is unique.
+    \item \textbf{Average O(1) Access}: Provides constant time complexity for search, insert, and delete operations on average.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of key-value pairs in the unordered map.
+    \item \texttt{insert(pair)}: Adds a key-value pair to the unordered map. If the key already exists, the pair will not be inserted.
+    \begin{lstlisting}
+    unorderedMapName.insert({1, "apple"});  // Adds a key-value pair
+    \end{lstlisting}
+    \item \texttt{erase(key)}: Removes the key-value pair with the specified key.
+    \begin{lstlisting}
+    unorderedMapName.erase(1);  // Removes the pair with key 1
+    \end{lstlisting}
+    \item \texttt{find(key)}: Returns an iterator to the element with the specified key. If the key is not found, it returns \texttt{unorderedMapName.end()}.
+    \begin{lstlisting}
+    auto it = unorderedMapName.find(1);  // Find element with key 1
+    if (it != unorderedMapName.end()) {
+        cout << it->second << endl;  // Access value using iterator
+    }
+    \end{lstlisting}
+    \item \texttt{operator[]}: Allows direct access to the value associated with the key. If the key does not exist, it will insert a default value for that key.
+    \begin{lstlisting}
+    unorderedMapName[1] = "apple";  // Adds or updates the value for key 1
+    \end{lstlisting}
+    \item \texttt{empty()}: Returns \texttt{true} if the unordered map is empty, \texttt{false} otherwise.
+    \begin{lstlisting}
+    if (unorderedMapName.empty()) {
+        cout << "Unordered map is empty" << endl;
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: Removes all elements from the unordered map.
+    \begin{lstlisting}
+    unorderedMapName.clear();  // Clears all elements
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+    unordered_map<int, string> unorderedMapName;
+    
+    // Insert key-value pairs
+    unorderedMapName.insert({1, "apple"});
+    unorderedMapName[2] = "banana";
+    
+    // Access value using key
+    cout << "Value associated with key 1: " << unorderedMapName[1] << endl;
+    
+    // Check if key exists
+    if (unorderedMapName.find(3) == unorderedMapName.end()) {
+        cout << "Key 3 not found" << endl;
+    }
+    
+    // Erase a key-value pair
+    unorderedMapName.erase(2);
+    cout << "Unordered map size: " << unorderedMapName.size() << endl;
+    
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+\section{Set}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+set<valueType> setName;
+\end{lstlisting}
+
+\begin{lstlisting}
+set<int> setName = {1, 2, 3, 4}; // Initialization
+\end{lstlisting}
+
+\begin{lstlisting}
+set<int> setName; // Create an empty set
+\end{lstlisting}
+
+\subsection{Description}
+
+A `set` is an associative container that stores unique elements in a sorted order. Each element in a `set` is unique, and the elements are automatically arranged in ascending order by default.
+
+\noindent Properties of a `set`:
+\begin{itemize}
+    \item \textbf{Unique Elements}: Each element in the set is unique. Duplicate elements are not allowed.
+    \item \textbf{Sorted Order}: The elements in the set are stored in sorted order.
+    \item \textbf{Efficient Operations}: Provides logarithmic time complexity for search, insert, and delete operations.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the set.
+    \begin{lstlisting}
+    cout << setName.size();  // Outputs the size of the set
+    \end{lstlisting}
+
+    \item \texttt{insert(value)}: Adds an element to the set. If the element already exists, it will not be added.
+    \begin{lstlisting}
+    setName.insert(5);  // Adds the value 5 to the set
+    \end{lstlisting}
+
+    \item \texttt{erase(value)}: Removes the element with the specified value.
+    \begin{lstlisting}
+    setName.erase(3);  // Removes the element 3
+    \end{lstlisting}
+
+    \item \texttt{find(value)}: Returns an iterator to the element with the specified value. If the value is not found, it returns \texttt{setName.end()}.
+    \begin{lstlisting}
+    auto it = setName.find(2);  // Find element 2
+    if (it != setName.end()) {
+        cout << *it << " found in the set";  // Access the value
+    }
+    \end{lstlisting}
+
+    \item \texttt{lower\_bound(value)}: Returns an iterator to the first element that is not less than the given value.
+    \begin{lstlisting}
+    auto it = setName.lower_bound(3);  // Iterator to the first element >= 3
+    if (it != setName.end()) {
+        cout << "Lower bound: " << *it;  // Outputs the value
+    }
+    \end{lstlisting}
+
+    \item \texttt{upper\_bound(value)}: Returns an iterator to the first element that is greater than the given value.
+    \begin{lstlisting}
+    auto it = setName.upper_bound(3);  // Iterator to the first element > 3
+    if (it != setName.end()) {
+        cout << "Upper bound: " << *it;  // Outputs the value
+    }
+    \end{lstlisting}
+
+    \item \texttt{empty()}: Returns \texttt{true} if the set is empty, \texttt{false} otherwise.
+    \begin{lstlisting}
+    if (setName.empty()) {
+        cout << "Set is empty";
+    }
+    \end{lstlisting}
+
+    \item \texttt{clear()}: Removes all elements from the set.
+    \begin{lstlisting}
+    setName.clear();  // Clears the set
+    \end{lstlisting}
+
+    \item \texttt{swap(otherSet)}: Swaps the contents of the current set with another set of the same type.
+    \begin{lstlisting}
+    set<int> set1 = {1, 2, 3};
+    set<int> set2 = {4, 5};
+    set1.swap(set2);  // Swaps the contents of set1 and set2
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+    set<int> setName = {1, 2, 3, 4, 5};
+    
+    // Insert an element
+    setName.insert(6);
+    
+    // Access elements
+    cout << "Elements in the set: ";
+    for (int elem : setName) {
+        cout << elem << " ";
+    }
+    cout << endl;
+
+    // Find an element
+    if (setName.find(3) != setName.end()) {
+        cout << "Element 3 found in the set." << endl;
+    }
+
+    // Lower bound
+    auto lower = setName.lower_bound(3);
+    if (lower != setName.end()) {
+        cout << "Lower bound of 3: " << *lower << endl;
+    }
+
+    // Upper bound
+    auto upper = setName.upper_bound(3);
+    if (upper != setName.end()) {
+        cout << "Upper bound of 3: " << *upper << endl;
+    }
+
+    // Erase an element
+    setName.erase(2);
+    cout << "Set size after erasing 2: " << setName.size() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+\newpage\section{Multiset}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+multiset<valueType> multisetName;
+\end{lstlisting}
+
+\begin{lstlisting}
+multiset<int> multisetName = {1, 2, 2, 3}; // Initialization
+\end{lstlisting}
+
+\begin{lstlisting}
+multiset<int> multisetName; // Create an empty multiset
+\end{lstlisting}
+
+\subsection{Description}
+
+A `multiset` is an associative container that stores elements in sorted order and allows duplicate values. The ordering is maintained by a comparison function, which is `operator<` by default.
+
+\noindent Properties of a `multiset`:
+\begin{itemize}
+    \item \textbf{Duplicates Allowed}: Multiple occurrences of the same value are permitted.
+    \item \textbf{Sorted Order}: Elements are stored in ascending order (or any custom sorting criteria defined by the comparison function).
+    \item \textbf{Efficient Operations}: Provides logarithmic time complexity for search, insert, and delete operations.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the multiset.
+    \item \texttt{insert(value)}: Adds an element to the multiset. Duplicate elements are allowed.
+    \begin{lstlisting}
+    multisetName.insert(2);  // Adds 2 to the multiset
+    \end{lstlisting}
+    \item \texttt{erase(value)}: Removes all occurrences of the specified value.
+    \begin{lstlisting}
+    multisetName.erase(2);  // Removes all 2s from the multiset
+    \end{lstlisting}
+    \item \texttt{find(value)}: Returns an iterator to the first occurrence of the specified value.
+    \begin{lstlisting}
+    auto it = multisetName.find(2);  // Finds first occurrence of 2
+    if (it != multisetName.end()) {
+        cout << *it << endl;  // Access the value
+    }
+    \end{lstlisting}
+    \item \texttt{count(value)}: Returns the number of occurrences of a specified value.
+    \begin{lstlisting}
+    cout << multisetName.count(2);  // Outputs the count of 2 in the multiset
+    \end{lstlisting}
+    \item \texttt{lower\_bound(value)}: Returns an iterator to the first element that is not less than the given value.
+    \item \texttt{upper\_bound(value)}: Returns an iterator to the first element that is greater than the given value.
+    \begin{lstlisting}
+    auto lower = multisetName.lower_bound(2);  // Iterator to first >= 2
+    auto upper = multisetName.upper_bound(2);  // Iterator to first > 2
+    for (auto it = lower; it != upper; ++it) {
+        cout << *it << " ";  // Access values in the range
+    }
+    \end{lstlisting}
+    \item \texttt{clear()}: Removes all elements from the multiset.
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+    multiset<int> multisetName = {1, 2, 2, 3, 4};
+    
+    // Insert elements
+    multisetName.insert(3);
+
+    // Count occurrences of an element
+    cout << "Count of 2: " << multisetName.count(2) << endl;
+
+    // Access range with lower and upper bound
+    auto lower = multisetName.lower_bound(2);
+    auto upper = multisetName.upper_bound(3);
+    cout << "Elements in range [2, 3): ";
+    for (auto it = lower; it != upper; ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // Erase all occurrences of 2
+    multisetName.erase(2);
+
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+\section{Unordered Set}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+unordered_set<valueType> unorderedSetName;
+\end{lstlisting}
+
+\begin{lstlisting}
+unordered_set<int> unorderedSetName = {1, 2, 3, 4}; // Initialization
+\end{lstlisting}
+
+\subsection{Description}
+
+An `unordered\_set` is an associative container that stores unique elements in an unordered fashion using a hash table. It provides average constant time complexity for search, insert, and delete operations.
+
+\noindent Properties of an `unordered\_set`:
+\begin{itemize}
+    \item \textbf{Unique Elements}: Each element in the `unordered\_set` is unique. Duplicate values are not allowed.
+    \item \textbf{Unordered Storage}: Elements are stored in no particular order.
+    \item \textbf{Efficient Operations}: Provides average O(1) time complexity for search, insert, and delete operations.
+\end{itemize}
+
+\subsection{Functions}
+
+\begin{enumerate}
+    \item \texttt{size()}: Returns the number of elements in the unordered set.
+    \item \texttt{insert(value)}: Adds an element to the unordered set. Duplicate values are ignored.
+    \begin{lstlisting}
+    unorderedSetName.insert(5);  // Adds 5 to the set
+    \end{lstlisting}
+    \item \texttt{erase(value)}: Removes the specified value.
+    \begin{lstlisting}
+    unorderedSetName.erase(2);  // Removes 2 from the set
+    \end{lstlisting}
+    \item \texttt{find(value)}: Returns an iterator to the specified value. If the value is not found, it returns \texttt{unorderedSetName.end()}.
+    \begin{lstlisting}
+    auto it = unorderedSetName.find(3);
+    if (it != unorderedSetName.end()) {
+        cout << *it << " found in the unordered set";
+    }
+    \end{lstlisting}
+    \item \texttt{count(value)}: Returns 1 if the value exists, 0 otherwise.
+    \begin{lstlisting}
+    cout << unorderedSetName.count(4);  // Outputs 1 if 4 exists
+    \end{lstlisting}
+    \item \texttt{clear()}: Removes all elements from the unordered set.
+    \item \texttt{empty()}: Returns \texttt{true} if the set is empty.
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+    unordered_set<int> unorderedSetName = {1, 2, 3, 4};
+
+    // Insert an element
+    unorderedSetName.insert(5);
+
+    // Check existence of an element
+    if (unorderedSetName.count(3)) {
+        cout << "Element 3 exists in the set" << endl;
+    }
+
+    // Erase an element
+    unorderedSetName.erase(2);
+
+    // Iterate over the unordered set
+    cout << "Elements in the unordered set: ";
+    for (int elem : unorderedSetName) {
+        cout << elem << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+\section{Sorting and Utility Functions}
+
+\subsection{Sort}
+
+\subsection{Syntax}
+
+\begin{lstlisting}
+#include <algorithm>
+sort(beginIterator, endIterator);
+sort(beginIterator, endIterator, comparator);
+\end{lstlisting}
+
+\subsection{Description}
+
+The `sort` function is part of the C++ Standard Library's `<algorithm>` header. It sorts the elements in the range `[beginIterator, endIterator)` in ascending order by default. You can also provide a custom comparator to define a custom sorting order.
+
+\noindent Properties:
+\begin{itemize}
+    \item Sorting is done in-place using the IntroSort algorithm, which is a combination of QuickSort, HeapSort, and InsertionSort.
+    \item Time complexity: \(O(n \log n)\).
+\end{itemize}
+
+\subsection{Custom Comparator}
+
+A custom comparator is a callable (function, lambda, or functor) that defines the sorting criteria. The comparator must return `true` if the first argument should come before the second, and `false` otherwise.
+
+\begin{lstlisting}
+// Example: Sort in descending order
+bool comparator(int a, int b) {
+    return a > b; // Custom comparator for descending order
+}
+
+sort(arr.begin(), arr.end(), comparator);
+\end{lstlisting}
+
+\begin{lstlisting}
+// Lambda Function Example
+sort(arr.begin(), arr.end(), [](int a, int b) {
+    return a > b; // Descending order
+});
+\end{lstlisting}
+
+\subsection{Functions for Sorting and Search}
+
+\begin{enumerate}
+    \item \texttt{sort(beginIterator, endIterator)}: Sorts the range in ascending order by default.
+    \item sort(beginIterator, endIterator, comparator): Sorts the range based on a custom comparator.
+    \item binary\_search(beginIterator, endIterator, value): Checks if a value exists in a sorted range.
+    \begin{lstlisting}
+    sort(arr.begin(), arr.end());
+    if (binary_search(arr.begin(), arr.end(), 5)) {
+        cout << "5 exists in the array";
+    }
+    \end{lstlisting}
+    \item \texttt{max\_element(beginIterator, endIterator)}: Returns an iterator to the largest element in the range.
+    \begin{lstlisting}
+    auto maxIt = max_element(arr.begin(), arr.end());
+    cout << "Max element: " << *maxIt;
+    \end{lstlisting}
+    \item \texttt{min\_element(beginIterator, endIterator)}: Returns an iterator to the smallest element in the range.
+    \begin{lstlisting}
+    auto minIt = min_element(arr.begin(), arr.end());
+    cout << "Min element: " << *minIt;
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{Usage Example}
+
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+// Custom comparator function
+bool customComparator(int a, int b) {
+    return a > b; // Sort in descending order
+}
+
+int main() {
+    vector<int> arr = {4, 2, 8, 1, 3};
+
+    // Default sort (ascending order)
+    sort(arr.begin(), arr.end());
+    cout << "Sorted in ascending order: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    // Custom sort (descending order)
+    sort(arr.begin(), arr.end(), customComparator);
+    cout << "Sorted in descending order: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    // Lambda for sorting by even first, then odd
+    sort(arr.begin(), arr.end(), [](int a, int b) {
+        if (a % 2 == b % 2) return a < b; // Ascending within groups
+        return (a % 2 == 0); // Even numbers come first
+    });
+    cout << "Sorted with custom lambda: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    // Find max and min elements
+    auto maxIt = max_element(arr.begin(), arr.end());
+    auto minIt = min_element(arr.begin(), arr.end());
+    cout << "Max element: " << *maxIt << endl;
+    cout << "Min element: " << *minIt << endl;
+
+    // Binary search
+    sort(arr.begin(), arr.end());
+    if (binary_search(arr.begin(), arr.end(), 3)) {
+        cout << "3 is found in the array" << endl;
+    } else {
+        cout << "3 is not found in the array" << endl;
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}
