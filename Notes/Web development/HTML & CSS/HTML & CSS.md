@@ -1,9 +1,40 @@
 # HTML & CSS notes
 
 ## HTML basics
-Link: Location/URL (Uniform resource locator)/location of a page.
+**HTML**: Hypertext markup language : Markup language  
+**CSS**: Cascading stylesheet : Styling language  
+**JS**: JavaScript : Programming language  
+**URL**: Uniform resource location : Location of a page.
 
-Hyperlink: An element that user can click on to navigateto the target page.
+When user/client types a URL and press enter, browser sent a request to server, this request is formatted based on HTTP (Hypertext transfer protocol). This request is known as HTTP request, the server reads this request and send a response known as HTTP response. HTTP is a language that client and server used to communicated. It's not an programming language, it's just and plain textual language. There is another language called HTTPs which is HTTP + Encryption.  
+
+HTTP request:
+```http
+GET /index.html HTTP/1.1
+Host: www.example.com
+Accept-Language: en-us
+```
+
+With this message the browser tell the server what it want, we can read it as, get a file called index.html (usually the homepage of a website) using HTTP version 1.1 from the host www.example.com, and the language I can accept is en-us (english).
+
+HTTP response:
+```http
+HTTP/1.1 200 OK
+Date: 1 Jan 2025 09:00
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html>
+    ...
+</html>
+```
+
+The HTTP response can be understand it as, HTTP/1.1 version followed by status code 200 OK, 200 means success or ok, next is the time of the response, and then the type of the content server is sending back and below that there is the HTML code.  
+As the browser reads this code, it construct the DOM (Document Object Model), this the model that represents the objects or elements in our HTML document. These elements are the building blocks of our page, like text, images, link, etc.
+
+As the browser is reading this HTML document that is returned from the server, it discovers references to other resources in this document like images, fonts and other stuff each of these resources has an address or a URL, so for each resource the browser sends a separate HTTP request to the server to fetch that resource. Many of these HTTP requests are sent in parallel so we can see the page as quickly as possible once the browser has all the necessary resources it will render the HTML document rendering an HTML document means displaying it.
+
+Hyperlink: An element that user can click on to navigate to the target page.
 ```html
 &lt; Less than
 &gt; Greater than
