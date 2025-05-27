@@ -5,10 +5,16 @@
     "editor.minimap.showSlider": "always",
     /*
     To complie cpp file with latest features add "-std=c++20" to compile the C++ file according to C++ version 20
-    Before:"cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", 
-    After: "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    Before:"cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", // Common command
+    After: "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", // Command to use C++20
     
     Changes also need at c/cpp intellisence, in this setting change the cpp standard to c++23 from gnu++17
+
+    // To run file which have white spaces in their filename.
+        "cpp": "cd \"$dir\" && g++ \"$fileName\" -o \"$fileNameWithoutExt\" && \"$dir$fileNameWithoutExt\"",
+
+    // To run file which have white spaces in their filename, and create the executable in a folder name build
+        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\" && \"./build/$fileNameWithoutExt\"",
     -----------------------------------------------------------------------------------------------------------------------
     Changed to run python file which has imported libraries by ctrl + alt + N
     "python": "python -u", 
@@ -18,11 +24,10 @@
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "zig": "zig run",
-        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", 
+        // To run file which have white spaces in their filename, and create the executable in a folder name build
+        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\" && \"./build/$fileNameWithoutExt\"",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
-        //Changed to run python file which has imported libraries by ctrl + alt + N
-        // "python": "python -u", 
         "python": "& C:/Users/mridu/AppData/Local/Programs/Python/Python312/python.exe",
         "perl": "perl",
         "perl6": "perl6",
