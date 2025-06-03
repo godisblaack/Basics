@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Change the "title" to the correct course name -->
+  <title>Course's Name - Codes</title>
+  <!-- Change the link href to the correct css file's source -->
+  <link rel="stylesheet" href="Template.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+</head>
+<body>
+  <header>
+    <!-- Change the "h1" to the correct course name -->
+    <h1>Course's Name</h1>
+    <h2>Code with Mosh Tutorials</h2>
+  </header>
+
+  <div class="container">
+    <h2>Select a Video</h2>
+    <select id="videoSelect" onchange="showCode(this.value)">
+      <option value="" disabled selected>Select a video</option>
+      <!-- Change the "value" to the correct video number and the title of the "option" -->
+      <option value="videoNumber">Video Number</option>
+      <!-- Add more options here -->
+    </select>
+
+    <div class="code-container" id="codeContainer">
+      <button class="copy-btn" onclick="copyCode()">Copy</button>
+      <!-- Change the languageName to the prefered language in the "class" below -->
+      <pre><code class="language-java" id="code-block">
+// Code will be displayed here
+      </code></pre>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Codes for Code with Mosh tutorials. All rights reserved.</p>
+  </footer>
+<!-- Change the script src to the correct js file's source -->
+  <script src="Template.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>
