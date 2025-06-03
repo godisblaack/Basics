@@ -1,0 +1,60 @@
+.tableNote {
+    width: 80%;
+}
+
+/* Table container */
+.tableContainer {
+    width: 80%;
+    overflow-x: auto;
+    padding-top: 1rem;
+    /* 16px */
+}
+
+/* Table styling */
+table {
+    padding-top: 6.25rem;
+    /* 100px */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table a {
+    color: black;
+    text-decoration: none;
+}
+
+/* Table cells */
+th,
+td {
+    padding: 0.625rem;
+    /* 10px */
+    text-align: left;
+    border-bottom: 1px solid white;
+}
+
+/* Table headers */
+th {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Problem difficulty color coding */
+.easy {
+    background-color: lightgreen;
+    color: black;
+}
+
+.medium {
+    background-color: #FCD299;
+    color: black;
+}
+
+.hard {
+    background-color: lightcoral;
+    color: black;
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: gray;
+}

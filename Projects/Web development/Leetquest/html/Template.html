@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/tableDescriptors.css">
+</head>
+
+<body>
+    <div class="logo"></div>
+
+    <h1 id="title">Template</h1>
+
+    <!-- Dot Container at the top of the page -->
+    <div class="dot-container">
+        <div class="dot easy"></div>
+        <span class="dot-text">Easy</span>
+
+        <div class="dot medium"></div>
+        <span class="dot-text">Medium</span>
+
+        <div class="dot hard"></div>
+        <span class="dot-text">Hard</span>
+    </div>
+
+    <p class="tableNote">The problem name is clickable, and clicking it will redirect you to the corresponding problem
+        page on LeetCode.</p>
+
+    <div class="tableContainer">
+        <table>
+            <thead>
+                <tr class="glassHeader">
+                    <th style="border-top-left-radius: 10px;">S.No.</th>
+                    <th>Leetcode problem</th>
+                    <th>Prerequisite(s)</th>
+                    <th style="border-top-right-radius: 10px;">Learning(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- Easy problem goes here. -->
+                <tr>
+                    <td></td>
+                    <td class="easy"><a href="https://leetcode.com/" target="_blank">Easy Problem</a></td>
+                    <td>Easy Prerequisite</td>
+                    <td>Easy Learning</td>
+                </tr>
+
+                <!-- Medium problem goes here. -->
+                <tr>
+                    <td></td>
+                    <td class="medium"><a href="https://leetcode.com/" target="_blank">Medium Problem</a></td>
+                    <td>Medium Prerequisite</td>
+                    <td>Medium Learning</td>
+                </tr>
+
+                <!-- Hard problem goes here. -->
+                <tr>
+                    <td></td>
+                    <td class="hard"><a href="https://leetcode.com/" target="_blank">Hard Problem</a></td>
+                    <td>Hard Prerequisite</td>
+                    <td>Hard Learning</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/serialNumber.js"></script>
+    <script src="../js/logo.js"></script>
+</body>
+
+</html>
