@@ -1,16 +1,20 @@
 [
-    // Removing keybindings
     {
         "key": "shift+alt+down",
-        "command": "-editor.action.insertCursorBelow",
-        "when": "editorTextFocus"
+        "command": "-editor.action.insertCursorBelow"
     },
     {
         "key": "shift+alt+up",
-        "command": "-editor.action.insertCursorAbove",
-        "when": "editorTextFocus"
+        "command": "-editor.action.insertCursorAbove"
     },
-    // Multiple cursour
+    {
+        "key": "ctrl+shift+down",
+        "command": "-editor.action.insertCursorBelow"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "-editor.action.insertCursorAbove"
+    },
     {
         "key": "shift+alt+down",
         "command": "editor.action.copyLinesDownAction",
@@ -21,15 +25,14 @@
         "command": "editor.action.copyLinesUpAction",
         "when": "editorTextFocus && !editorReadonly"
     },
-    // Copying lines
     {
         "key": "ctrl+alt+down",
-        "command": "editor.action.copyLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
     },
     {
         "key": "ctrl+alt+up",
-        "command": "editor.action.copyLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
     }
 ]
