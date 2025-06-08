@@ -31,9 +31,9 @@ public:
 };
 ```
 
-**Time Complexity**: O(N logN)
+**Time Complexity**: O(N log N)
 
-**Space Complexity**: O(logN)
+**Space Complexity**: O(log N)
 
 This is the **optimized** solution. I did this couple of months back. The next time when I did it, I used hashmap, and in that I got stuck in a check for a very long time.
 
@@ -75,6 +75,6 @@ public:
 };
 ```
 
-**Time Complexity**: O(N logN)
+**Time Complexity**: O(N log N)
 
 **Space Complexity**: O(N)

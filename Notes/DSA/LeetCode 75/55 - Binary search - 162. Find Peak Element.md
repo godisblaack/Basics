@@ -60,8 +60,6 @@ If nums[mid] is greater than its right neighbor (nums[mid + 1]), it means we are
 **Optimized solution**
 
 ```cpp
-// Optimized 
-
 class Solution {
 public:
     int findPeakElement(vector<int>& nums) {
@@ -107,6 +105,10 @@ public:
     }
 };
 ```
+
+**Time complexity:** O(log N)
+
+**Space complexity:** O(1)
 
 **Why the algorithm works?**  
 The algorithm's strategy is **not** to find the peak, but a peak. Even if there are multiple peaks (like 2 at index 1 and 6 at index 5 in [1, 2, 1, 3, 5, 6, 4]), the algorithm's logic will correctly guide the left and right pointers to converge on one of them. Which one it finds depends on the initial mid calculation and the subsequent comparisons, but it's guaranteed to be a valid peak.

@@ -65,12 +65,12 @@ public:
 };
 ```
 
-**Time complexity:** O(M logM + N logM)
-- Sorting potions: O(M logM)  
+**Time complexity:** O(M log M + N log M)
+- Sorting potions: O(M log M)  
 - Looping through spells: N iterations  
-- Binary search within the loop: O(logM) for each iteration  
+- Binary search within the loop: O(log M) for each iteration  
 
-Therefore, the total time complexity is the sum of the sorting time and the time spent in the loop: O(M logM + N logM), where,
+Therefore, the total time complexity is the sum of the sorting time and the time spent in the loop: O(M log M + N log M), where,
 - N is the number of spells in the spells vector.
 - M is the number of potions in the potions vector.
 

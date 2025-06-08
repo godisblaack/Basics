@@ -42,6 +42,6 @@ public:
 ```
 
 **Time complexity:** O(N)
-**Space complexity:** O(H), where H is the height of the binary tree. In the worst case (skewed tree), this is O(N). In the best case (balanced tree), this is O(logN).
+**Space complexity:** O(H), where H is the height of the binary tree. In the worst case (skewed tree), this is O(N). In the best case (balanced tree), this is O(log N).
 
 This is the **optimized** solution.
