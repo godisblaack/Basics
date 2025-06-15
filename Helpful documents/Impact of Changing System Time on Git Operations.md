@@ -1,4 +1,4 @@
-# **Impact of Changing System Time on Git Operations**
+# Impact of Changing System Time on Git Operations
 
 When the system time is altered, particularly when it is set to a past date, it can have various effects on Git operations. Some aspects of Git are sensitive to timestamps, such as tags and commits. Below is a breakdown of what can and **cannot** be changed after altering the system time.
 

@@ -1,4 +1,4 @@
-# Installing Arch Linux on a pendrive using an HP Laptop: A Detailed Guide
+# Arch linux on a pendrive using an HP Laptop
 
 This document provides a comprehensive, step-by-step tutorial for installing Arch Linux on a pendrive using an HP laptop, focusing on a clean installation with a minimal CLI environment.
 

@@ -1,4 +1,4 @@
-# Installing Oh My Posh on Ubuntu
+# Oh My Posh on Ubuntu
 
 This guide outlines the steps to install Oh My Posh, a customizable prompt engine for any shell, on your Ubuntu machine.
 
@@ -32,7 +32,7 @@ This guide outlines the steps to install Oh My Posh, a customizable prompt engin
     eval "$(oh-my-posh init bash)"
 
     # Set a specific theme. Replace 'paradox' with your desired theme name.
-    eval "$(oh-my-posh init bash --config ~/.cache/oh-my-posh/themes/paradox.omp.js>
+    eval "$(oh-my-posh init bash --config ~/.cache/oh-my-posh/themes/paradox.omp.js)">
     ```
     * `export PATH="$PATH:$HOME/.local/bin"`: This line ensures that your system knows where to find the `oh-my-posh` executable. While often already included, explicitly adding it here guarantees it's in your PATH.
     * `eval "$(oh-my-posh init bash)"`: This is the core command that initializes Oh My Posh for your Bash shell using the default configuration.

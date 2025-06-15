@@ -1,4 +1,4 @@
-# GRUB installation in Ubuntu
+# GRUB on Ubuntu
 
 This document outlines the steps to enable GRUB to detect other operating systems installed on your system, such as Windows, so they appear in the GRUB boot menu.
 

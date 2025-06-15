@@ -1,4 +1,4 @@
-# Detailed Documentation: Setting up Docker in Project IDX for General Projects
+# Docker in Project IDX for general projects
 
 This document provides a comprehensive guide for setting up and utilizing a Docker environment within Google Project IDX for general development projects. It outlines the steps to create a Dockerfile, configure Project IDX to use it, access the container, manage project files, install dependencies, and run applications.
 

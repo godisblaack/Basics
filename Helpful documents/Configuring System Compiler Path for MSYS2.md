@@ -1,4 +1,4 @@
-# **Granting MSYS2 Access to System-Wide Compilers**  
+# Granting MSYS2 Access to System-Wide Compilers  
 
 This guide enables **MSYS2** to recognize system-installed compilers (e.g., **JDK 21**) by passing their paths to the **MSYS2 terminal**.  
 

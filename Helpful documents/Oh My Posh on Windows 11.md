@@ -1,4 +1,4 @@
-# Setting Up Terminal Theme Using Oh My Posh
+# Oh My Posh on Windows 11
 
 This guide will walk you through the steps to install and configure Oh My Posh, a customizable prompt engine for any shell, in both PowerShell and MSYS2 environments on Windows.
 

@@ -1,4 +1,4 @@
-# Steps to Add the SSH Key to Your GitHub Profile
+# Adding the SSH Key to GitHub
 
 ### 1. Log in to GitHub
 - Open your web browser and go to [GitHub](https://github.com).

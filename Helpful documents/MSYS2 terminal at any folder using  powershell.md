@@ -1,4 +1,4 @@
-# MSSYS2 terminal at any folder using powershell
+# MSYS2 terminal at any folder using powershell
 Open powershell where you want to open msys2 mingw64 terminal and type:
 
 ```shell

@@ -1,4 +1,4 @@
-# SSH Key Generation and Viewing Documentation
+# SSH Key Generation
 
 ## Overview
 This document outlines the steps to generate an SSH key using the Ed25519 algorithm and how to view the public key using the `cat` command. SSH keys are used for secure authentication when connecting to remote servers and services.
