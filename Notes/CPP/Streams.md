@@ -498,6 +498,7 @@ int main() {
 
 ```cpp
 #include <sstream>
+#include <iomanip> // for manipulation of numbers
 
 int main() {
     double number = 12.34;
