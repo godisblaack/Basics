@@ -166,3 +166,53 @@ To change the theme in PowerShell, you'll typically modify your PowerShell profi
 4.  **Restart PowerShell:** Close all PowerShell windows and open a new one. Your prompt should now reflect the new theme.
 
 Enjoy your newly customized terminal with Oh My Posh!
+
+## Change path shown in terminal
+
+To make your prompt display only the **current folder name** (instead of the full path), just tweak the `<THEME_NAME>.omp.json` theme you're referencing.
+
+### Here's what to do:
+
+1. **Open the Theme File**
+   Use a text editor to open the theme:
+   ```bash
+   nano /c/Users/$(whoami)/AppData/Local/Programs/oh-my-posh/themes/<THEME_NAME>.omp.json
+   ```
+
+2. **Find the `path` Segment**
+   Look for the section that looks like this (or similar):
+   ```json
+    {
+        "background": "#91ddff",
+        "foreground": "#100e23",
+        "powerline_symbol": "\ue0b0",
+        "properties": {
+          "folder_icon": "\uf115",
+          "folder_separator_icon": " \ue0b1 ",
+          "style": "full"
+        },
+        "style": "powerline",
+        "template": " {{ .Path }} ",
+        "type": "path"
+    },
+   ```
+
+3. **Modify the `properties`**
+   Inside the `properties` block, add or change the `style` to `"folder"` like so:
+   ```json
+   "properties": {
+     "style": "folder"
+   }
+   ```
+   This tells Oh My Posh to display only the current folder name.
+
+4. **Save and Exit**
+   If you're using `nano`, press `Ctrl + X`, then `Y`, then `Enter`.
+
+5. **Apply the Changes**
+   Back in your terminal:
+   ```bash
+   source ~/.bash_profile
+   ```
+
+That’s it! Your prompt will now feel a lot cleaner and less cluttered.
