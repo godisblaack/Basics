@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Mastery - Codes</title>
+  <link rel="stylesheet" href="JavaMastery.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+</head>
+<body>
+  <header>
+    <h1>Java Mastery</h1>
+    <h2>Code with Mosh Tutorials</h2>
+  </header>
+
+  <div class="container">
+    <h2>Select a Video</h2>
+    <select id="videoSelect" onchange="showCode(this.value)">
+      <option value="" disabled selected>Select a video</option>
+      <option value="video3">Video 3</option>
+      <option value="video8">Video 8</option>
+      <!-- Add more options here -->
+    </select>
+
+    <div class="code-container" id="codeContainer">
+      <button class="copy-btn" onclick="copyCode()">Copy</button>
+      <pre><code class="language-java" id="code-block">
+// Code will be displayed here
+      </code></pre>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Codes for Code with Mosh tutorials. All rights reserved.</p>
+  </footer>
+
+  <script src="JavaMastery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>

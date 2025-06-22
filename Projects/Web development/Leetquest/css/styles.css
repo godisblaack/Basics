@@ -1,0 +1,101 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.logo {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 10vw; 
+    height: 10vw;
+}
+
+.logo img {
+    border-radius: 50%;
+}
+
+#title {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    font-size: 8vw;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 60%;  
+    margin-top: 10rem;
+}
+
+#topicsButton {
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    color: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5rem;
+    font-size: 2rem; 
+    position: relative;
+    overflow: hidden;
+    background-size: 600%;
+    box-shadow: 0 0 1rem rgba(3, 169, 244, 0.7);
+    animation: animate 20s linear infinite;
+}
+
+#topicsButton:hover {
+    animation: animate 5s linear infinite;
+    transition: background 1s ease;
+    box-shadow: 0 0 3rem rgba(3, 169, 244, 1), 0 0 6rem rgba(244, 65, 165, 1);
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 400%;
+    }
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: 2rem;
+    }
+    #title {
+        font-size: 5rem; 
+    }
+    #topicsButton {
+        font-size: 2rem; 
+        padding: 1.5rem;
+    }
+    .buttonsContainer {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 2rem;
+    }
+    #title {
+        font-size: 10vw; 
+    }
+    #topicsButton {
+        font-size: 5vw; 
+        padding: 1.5rem;
+    }
+    .buttonsContainer {
+        width: 50%;
+    }
+}
