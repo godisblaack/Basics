@@ -1,6 +1,8 @@
 Link: https://leetcode.com/problems/non-overlapping-intervals/description/
 
-**My solution**
+I was not able to solve it. I was not able to pass all the test case with my solution.
+
+**Optimized solution**
 
 ```cpp
 class Solution {
@@ -53,5 +55,3 @@ public:
 **Time complexity:** O(N log N)
 
 **Space complexity:** O(log N)
-
-This is the **optimized** solution. I was not able to pass all the test case with my solution.
