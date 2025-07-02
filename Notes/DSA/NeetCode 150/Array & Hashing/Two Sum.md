@@ -1,0 +1,104 @@
+Link: https://leetcode.com/problems/two-sum/description/
+
+**My solution**
+
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> result;
+
+        for (int i = 0; i < nums.size() - 1; i++) {
+            for (int j = i+1; j < nums.size(); j++) {
+                if ( target == nums[i] + nums[j] && i != j) {
+                    result.push_back(i);
+                    result.push_back(j);
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+};
+```
+
+**Time complexity:** O($N^{2}$)
+
+**Space complexity:** O(1), bounded because we are only storing 2 integer values.
+
+This is **not** the optimal solution. It is my brute force approach.
+
+**My 2nd solution**
+
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i = 0;
+        int j = nums.size() - 1;
+
+        unordered_map<int, int> store;
+
+        for (int i = 0; i < nums.size(); i++) {
+            store[nums[i]] = i;
+        }
+
+        vector<int> pair;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (store.find(target - nums[i]) != store.end()) {
+                if (store[target - nums[i]] != i) {
+                    pair.push_back(i);
+                    pair.push_back(store[target - nums[i]]);
+
+                    break;
+                }
+            }
+        }
+
+        return pair;
+    }
+};
+```
+
+**Time complexity:** O(N)
+
+**Space complexity:** O(N)
+
+This is **not** the optimal solution.
+
+**Optimal solution**
+
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        // Hash map to store value → index for quick lookup
+        unordered_map<int, int> seen;
+
+        // Iterate through the array
+        for (int i = 0; i < nums.size(); ++i) {
+            int complement = target - nums[i]; // Determine the number needed to reach the target
+
+            // Check if the complement has already been seen
+            if (seen.find(complement) != seen.end()) {
+                // If yes, we found the two numbers that add up to target
+                // Return the indices: [index of complement, current index]
+                return {seen[complement], i};
+            }
+
+            // If complement not found, store the current number with its index
+            seen[nums[i]] = i;
+        }
+
+        // Return an empty vector if no solution is found
+        // (Though the problem guarantees one solution)
+        return {};
+    }
+};
+```
+
+**Time complexity:** O(N)
+
+**Space complexity:** O(N)
