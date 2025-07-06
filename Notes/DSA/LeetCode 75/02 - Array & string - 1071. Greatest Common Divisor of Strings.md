@@ -88,7 +88,7 @@ public:
 
 **Space Complexity:** O(L1 + L2)
 
-**Optimized solution by Gemini**
+**Optimized solution**
 
 ```cpp
 class Solution {
