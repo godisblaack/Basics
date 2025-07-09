@@ -3,22 +3,24 @@
     "files.autoSave": "afterDelay",
     "editor.wordWrap": "on",
     "editor.minimap.showSlider": "always",
-    /*
-    To complie cpp file with latest features add "-std=c++20" to compile the C++ file according to C++ version 20
-    Before:"cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", // Common command
-    After: "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", // Command to use C++20
     
-    Changes also need at c/cpp intellisence, in this setting change the cpp standard to c++23 from gnu++17
+    "notebook.editorOptionsCustomizations": {
+        "editor.tabSize": 4,
+        "editor.indentSize": 4,
+        "editor.insertSpaces": true
+    },
 
-    // To run file which have white spaces in their filename.
-        "cpp": "cd \"$dir\" && g++ \"$fileName\" -o \"$fileNameWithoutExt\" && \"$dir$fileNameWithoutExt\"",
-
-    // To run file which have white spaces in their filename, and create the executable in a folder name build
-        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\" && \"./build/$fileNameWithoutExt\"",
-    -----------------------------------------------------------------------------------------------------------------------
-    Changed to run python file which has imported libraries by ctrl + alt + N
-    "python": "python -u", 
-    */
+    // GitHub theme
+    "workbench.colorTheme": "GitHub Dark High Contrast",
+    // To remove the rectangle box highlight
+    "workbench.colorCustomizations": {
+        "[GitHub Dark High Contrast]": {
+            "editor.lineHighlightBorder": "#00000000"// fully transparent
+        }
+    },
+    "workbench.editor.empty.hint": "hidden",
+    
+    // Code runner
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
@@ -95,23 +97,6 @@
                 "MSYSTEM": "MINGW64",
                 "CHERE_INVOKING": "1"
             }
-        }
-    },
-    "notebook.editorOptionsCustomizations": {
-        "editor.tabSize": 4,
-        "editor.indentSize": 4,
-        "editor.insertSpaces": true
-    },
-    "[python]": {
-        "diffEditor.ignoreTrimWhitespace": false,
-        "editor.formatOnType": true,
-        "editor.wordBasedSuggestions": "off"
-    },
-    "workbench.colorTheme": "GitHub Dark High Contrast",
-    // To remove the rectangle box highlight
-    "workbench.colorCustomizations": {
-        "[GitHub Dark High Contrast]": {
-            "editor.lineHighlightBorder": "#00000000"// fully transparent
         }
     }
 }
