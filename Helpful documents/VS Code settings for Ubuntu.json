@@ -3,32 +3,32 @@
     "files.autoSave": "afterDelay",
     "editor.wordWrap": "on",
     "editor.minimap.showSlider": "always",
-    /*
-    To complie cpp file with latest features add "-std=c++20" to compile the C++ file according to C++ version 20
-    Before:"cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", // Common command
-    After: "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt", // Command to use C++20
-    
-    Changes also need at c/cpp intellisence, in this setting change the cpp standard to c++23 from gnu++17
+    "notebook.editorOptionsCustomizations": {
+        "editor.tabSize": 4,
+        "editor.indentSize": 4,
+        "editor.insertSpaces": true
+    },
+    "workbench.colorTheme": "GitHub Dark Default",
+    // To remove the rectangle box highlight
+    "workbench.colorCustomizations": {
+        "[GitHub Dark High Contrast]": {
+            "editor.lineHighlightBorder": "#00000000"  // fully transparent
+        }
+    },
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true,
 
-    // To run file which have white spaces in their filename.
-        "cpp": "cd \"$dir\" && g++ \"$fileName\" -o \"$fileNameWithoutExt\" && \"$dir$fileNameWithoutExt\"",
-
-    // To run file which have white spaces in their filename, and create the executable in a folder name build
-        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\" && \"./build/$fileNameWithoutExt\"",
-    -----------------------------------------------------------------------------------------------------------------------
-    Changed to run python file which has imported libraries by ctrl + alt + N
-    "python": "python -u", 
-    */
+    // Code runner
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "zig": "zig run",
-        // To run file which have white spaces in their filename, and create the executable in a folder name build
-        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\" && \"./build/$fileNameWithoutExt\"",
+        // To run single cpp file and multiple files (including header files) which have white spaces in their filename, and it will create the executable in a folder name `build`.
+        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && if [ -f \"main.cpp\" ]; then g++ *.cpp -o \"./build/$fileNameWithoutExt\"; else g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\"; fi && \"./build/$fileNameWithoutExt\"",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
-        "python": "& C:/Users/mridu/AppData/Local/Programs/Python/Python312/python.exe",
+        "python": "python",
         "perl": "perl",
         "perl6": "perl6",
         "ruby": "ruby",
@@ -79,37 +79,6 @@
         "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
         "gleam": "gleam run -m $fileNameWithoutExt"
     },
-    "python.defaultInterpreterPath": "C:\\Users\\mridu\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
-    "redhat.telemetry.enabled": true,
     "code-runner.clearPreviousOutput": true,
-    "code-runner.runInTerminal": true,
-
-    // MSYS2 MINGW64 terminal - This will now show a MSYS2 MINGW64 terminal in the list of terminal panel.
-    "terminal.integrated.profiles.windows": {
-    "MSYS2 MINGW64": {
-        "path": "C:\\msys64\\usr\\bin\\bash.exe",
-        "args": ["--login", "-i"],
-        "env": {
-            "MSYSTEM": "MINGW64",
-            "CHERE_INVOKING": "1"
-        }
-    }
-    },
-    "notebook.editorOptionsCustomizations": {
-        "editor.tabSize": 4,
-        "editor.indentSize": 4,
-        "editor.insertSpaces": true
-    },
-    "[python]": {
-        "diffEditor.ignoreTrimWhitespace": false,
-        "editor.formatOnType": true,
-        "editor.wordBasedSuggestions": "off"
-    },
-    "workbench.colorTheme": "GitHub Dark High Contrast",
-    // To remove the rectangle box highlight
-    "workbench.colorCustomizations": {
-        "[GitHub Dark High Contrast]": {
-            "editor.lineHighlightBorder": "#00000000"// fully transparent
-        }
-    }
+    "code-runner.runInTerminal": true
 }
