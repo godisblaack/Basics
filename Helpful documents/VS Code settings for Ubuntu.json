@@ -3,21 +3,22 @@
     "files.autoSave": "afterDelay",
     "editor.wordWrap": "on",
     "editor.minimap.showSlider": "always",
+    
     "notebook.editorOptionsCustomizations": {
         "editor.tabSize": 4,
         "editor.indentSize": 4,
         "editor.insertSpaces": true
     },
-    "workbench.colorTheme": "GitHub Dark Default",
+
+    // GitHub theme
+    "workbench.colorTheme": "GitHub Dark High Contrast",
     // To remove the rectangle box highlight
     "workbench.colorCustomizations": {
         "[GitHub Dark High Contrast]": {
-            "editor.lineHighlightBorder": "#00000000"  // fully transparent
+            "editor.lineHighlightBorder": "#00000000"// fully transparent
         }
     },
-    "IDX.aI.enableInlineCompletion": true,
-    "IDX.aI.enableCodebaseIndexing": true,
-
+    "workbench.editor.empty.hint": "hidden",
     // Code runner
     "code-runner.executorMap": {
         "javascript": "node",
@@ -79,6 +80,7 @@
         "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
         "gleam": "gleam run -m $fileNameWithoutExt"
     },
+    "redhat.telemetry.enabled": false,
     "code-runner.clearPreviousOutput": true,
     "code-runner.runInTerminal": true
 }
