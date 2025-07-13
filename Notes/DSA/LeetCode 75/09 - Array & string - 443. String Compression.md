@@ -3,7 +3,6 @@ Link: https://leetcode.com/problems/string-compression/description/
 **My 1st solution**
 
 ```cpp
-```cpp
 class Solution {
 public:
     int compress(vector<char>& chars) {

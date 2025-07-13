@@ -19,6 +19,7 @@
         }
     },
     "workbench.editor.empty.hint": "hidden",
+
     // Code runner
     "code-runner.executorMap": {
         "javascript": "node",
@@ -26,7 +27,7 @@
         "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "zig": "zig run",
         // To run single cpp file and multiple files (including header files) which have white spaces in their filename, and it will create the executable in a folder name `build`.
-        "cpp": "cd \"$dir\" && mkdir -p \"./build\" && if [ -f \"main.cpp\" ]; then g++ *.cpp -o \"./build/$fileNameWithoutExt\"; else g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\"; fi && \"./build/$fileNameWithoutExt\"",
+        "cpp": "cd $dir && mkdir -p \"./build\" && if [ -f \"main.cpp\" ]; then g++ *.cpp -o \"./build/$fileNameWithoutExt\"; else g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\"; fi && \"./build/$fileNameWithoutExt\"",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
         "python": "python",

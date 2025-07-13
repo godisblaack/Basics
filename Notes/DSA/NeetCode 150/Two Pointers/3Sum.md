@@ -87,6 +87,6 @@ public:
 };
 ```
 
-**Time complexity:** O($N^{2})
+**Time complexity:** O($N^{2}$)
 
 **Space complexity:** O(1)
