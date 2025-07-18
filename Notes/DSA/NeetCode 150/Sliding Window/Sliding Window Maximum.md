@@ -59,8 +59,6 @@ public:
 **Optimal solution - Using deque (Double ended queue)**
 
 ```cpp
-// Optimized
-
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
