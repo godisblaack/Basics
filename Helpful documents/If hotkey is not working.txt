@@ -1,4 +1,10 @@
-If the hotkey is not working in HP x360 440g1, then install "sp91903" and restart the pc. Use the hotkey, if the dialogue box pops up saying HP Hotkey Support then Disable HP Hotkey UWP Service by following the steps below:
+1st method:
+Press Windows + R, type services.msc, and hit Enter.
+Locate "HP Hotkey UWP Service," right-click it, and select "Properties."
+Change the "Startup type" to "Disabled".
+
+2nd method:
+Install "sp91903" and restart the pc. Use the hotkey, if the dialogue box pops up saying HP Hotkey Support then Disable HP Hotkey UWP Service by following the steps below:
 Press Windows + R, type services.msc, and hit Enter.
 Locate "HP Hotkey UWP Service," right-click it, and select "Properties."
 Change the "Startup type" to "Disabled".
