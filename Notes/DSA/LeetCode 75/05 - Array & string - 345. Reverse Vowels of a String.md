@@ -87,9 +87,47 @@ public:
 
 **Space complexity:** O(N)
 
-There is another way to do it.
+**My 3rd solution**
 
-**Other solution**
+```cpp
+class Solution {
+public:
+    string reverseVowels(string s) {
+        int left = 0;
+        int right = s.length() - 1;
+        
+        while (left < right) {
+            while (left < right && !isVowel(s[left]))  {
+                left++;
+            }
+            
+            while (left < right && !isVowel(s[right]))  {
+                right--;
+            }
+            
+            if (left < right) {
+                swap(s[left], s[right]);
+                
+                left++;
+                right--;
+            }
+        }
+
+        return s;
+    }
+
+    bool isVowel(char ch) {
+        return (tolower(ch) == 'a' || tolower(ch) == 'e' || tolower(ch) == 'i' || tolower(ch) == 'o' || tolower(ch) == 'u');
+    }
+};
+```
+**Time complexity:** O(N)
+
+**Space complexity:** O(N)
+
+This is the **optimized** solution.
+
+**Another solution**
 
 ```cpp
 class Solution {

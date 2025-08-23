@@ -35,7 +35,9 @@ Since maxLength is either L1 or L2, and in the worst case (e.g., word1 is very l
 
 **Space Complexity:** O(L1 + L2)  
 
-This is the **optimized** solution. The other way to do it is as follows:
+This is the **optimized** solution.
+
+**Cleaner code**
 
 ```cpp
 class Solution {

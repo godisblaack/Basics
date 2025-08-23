@@ -18,7 +18,7 @@
 
         workspace = {
             onCreate = {
-            default.openFiles = [ "README.md" ];
+            default.openFiles = [];
             };
             onStart = { };
         };

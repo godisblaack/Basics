@@ -190,7 +190,7 @@ struct Movie {
     bool isPopular;
 
     // We are going to refer this functions as methods.
-    // Methods is a function that is part of an object which can be an instance of a structure of a class.
+    // Methods is a function that is part of an object which can be an instance of a structure or a class.
     bool equals(const Movie& movie) {
         return (
             title == movie.title && 

@@ -27,6 +27,10 @@ Attributes and Functions are called members of a class. With this class we are d
 Structures: It is about data.  
 Classes: It is about data and behaviour (functionality).
 
+### Abstraction
+
+Abstraction which means a general model of something.
+
 ### Encapsulation
 
 Combining the data and functions that operate on the data into one unit (which is a class or an object).  
