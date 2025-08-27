@@ -27,7 +27,7 @@ public:
 };
 ```
 
-**Time complexity:** O($N_{2}$)
+**Time complexity:** O($N^{2}$)
 
 **Space complexity:** O(N)
 
@@ -90,6 +90,6 @@ public:
 };
 ```
 
-**Time complexity:** O(N) on average, O($N_{2}$) in the worst case.
+**Time complexity:** O(N) on average, O($N^{2}$) in the worst case.
 
 **Space complexity:** O(N)

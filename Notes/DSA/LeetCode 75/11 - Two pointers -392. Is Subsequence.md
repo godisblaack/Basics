@@ -78,6 +78,8 @@ public:
 
 **Space complexity:** O(1)
 
+Both the solutions are the optimized solution. There is another way to do it, which is as follows:
+
 **Other solution by Gemini**
 
 ```cpp

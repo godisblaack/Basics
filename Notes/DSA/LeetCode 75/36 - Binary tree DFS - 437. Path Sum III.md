@@ -1,4 +1,4 @@
-Link: https://leetcode.com/problems/path-sum-ii/description/
+Link: https://leetcode.com/problems/path-sum-iii/description/
 
 **My solution**
 
@@ -60,17 +60,35 @@ This is **not** the optimized solution.
 **Optimized solution**
 
 ```cpp
-unordered_map<long long, int> prefixSumCount;
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int pathSum(TreeNode* root, int targetSum) {
+        unordered_map<long long, int> prefixSumCount;
         prefixSumCount[0] = 1; // Base case for root itself
         return dfs(root, 0, targetSum, prefixSumCount);
     }
 
 private:
-    int dfs(TreeNode* node, long long currentSum, int targetSum, unordered_map<long long, int>& prefixSumCount) {
-        if (!node) return 0;
+    int dfs(TreeNode* node, long long currentSum, int targetSum,
+            unordered_map<long long, int>& prefixSumCount) {
+        if (!node)
+            return 0;
 
         currentSum += node->val;
-        int count = prefixSumCount[currentSum - targetSum]; // Check for valid path
+        int count =
+            prefixSumCount[currentSum - targetSum]; // Check for valid path
 
         // Store current prefix sum in hashmap
         prefixSumCount[currentSum]++;
