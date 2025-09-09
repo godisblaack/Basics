@@ -92,4 +92,6 @@ To make your prompt display only the **current folder name** (instead of the ful
    source ~/.bash_profile
    ```
 
-That’s it! Your prompt will now feel a lot cleaner and less cluttered.
+### Custom theme
+
+Go to the directory `/home/<USERNAME>/.cache/oh-my-posh/themes`, and paste your custom theme `Name.opm.json` file there. 

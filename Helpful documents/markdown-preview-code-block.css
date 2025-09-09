@@ -1,0 +1,68 @@
+/* Target only code inside fenced code blocks in Markdown Preview */
+.vscode-body pre code {
+    /* Match GitHub's padding & font */
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 85%;
+    line-height: 1.45;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    display: block;
+}
+
+/* Syntax colors (GitHub Dark default) */
+.vscode-body pre code .hljs-comment,
+.vscode-body pre code .hljs-quote {
+    color: #8b949e;
+    font-style: italic;
+}
+
+.vscode-body pre code .hljs-keyword,
+.vscode-body pre code .hljs-selector-tag,
+.vscode-body pre code .hljs-subst {
+    color: #ff7b72;
+}
+
+.vscode-body pre code .hljs-literal,
+.vscode-body pre code .hljs-number,
+.vscode-body pre code .hljs-tag .hljs-attr {
+    color: #79c0ff;
+}
+
+.vscode-body pre code .hljs-string,
+.vscode-body pre code .hljs-doctag {
+    color: #a5d6ff;
+}
+
+.vscode-body pre code .hljs-title,
+.vscode-body pre code .hljs-section {
+    color: #d2a8ff;
+}
+
+.vscode-body pre code .hljs-attribute,
+.vscode-body pre code .hljs-name,
+.vscode-body pre code .hljs-variable {
+    color: #ffa657;
+}
+
+.vscode-body pre code .hljs-built_in,
+.vscode-body pre code .hljs-builtin-name {
+    color: #f0883e;
+}
+
+.vscode-body pre code .hljs-symbol,
+.vscode-body pre code .hljs-bullet {
+    color: #79c0ff;
+}
+
+.vscode-body pre code .hljs-meta {
+    color: #ffa657;
+}
+
+.vscode-body pre code .hljs-emphasis {
+    font-style: italic;
+}
+
+.vscode-body pre code .hljs-strong {
+    font-weight: bold;
+}

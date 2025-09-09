@@ -15,9 +15,11 @@
     // To remove the rectangle box highlight
     "workbench.colorCustomizations": {
         "[GitHub Dark High Contrast]": {
-            "editor.lineHighlightBorder": "#00000000"// fully transparent
+            "editor.lineHighlightBorder": "#00000000",// fully transparent
+            "textCodeBlock.background": "#00000000"
         }
     },
+
     "workbench.editor.empty.hint": "hidden",
 
     // Code runner
