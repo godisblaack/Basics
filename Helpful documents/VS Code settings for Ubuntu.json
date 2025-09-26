@@ -23,7 +23,10 @@
     "workbench.editor.empty.hint": "hidden",
 
     // Code runner
+    "code-runner.runInTerminal": true,
+    "code-runner.clearPreviousOutput": true,
     "code-runner.executorMap": {
+
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
@@ -32,7 +35,7 @@
         "cpp": "cd $dir && mkdir -p \"./build\" && if [ -f \"main.cpp\" ]; then g++ *.cpp -o \"./build/$fileNameWithoutExt\"; else g++ \"$fileName\" -o \"./build/$fileNameWithoutExt\"; fi && \"./build/$fileNameWithoutExt\"",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
-        "python": "python",
+        "python": "python -u",
         "perl": "perl",
         "perl6": "perl6",
         "ruby": "ruby",
@@ -83,7 +86,5 @@
         "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
         "gleam": "gleam run -m $fileNameWithoutExt"
     },
-    "redhat.telemetry.enabled": false,
-    "code-runner.clearPreviousOutput": true,
-    "code-runner.runInTerminal": true
+    "redhat.telemetry.enabled": false
 }
