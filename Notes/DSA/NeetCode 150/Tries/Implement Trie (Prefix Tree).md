@@ -86,16 +86,16 @@ public:
  */
  ```
 
- **Time complexity:** O(L)
+**Time complexity:** O(L)
 
- **Space complexity:** O(N L ALPHABET_SIZE)
+**Space complexity:** O(N L ALPHABET_SIZE)
 
- This is **not** the optimized code.
+This is **not** the optimized code.
 
- **Optimized soluiton**
+**Optimized soluiton**
 
- ```cpp
- #include <string>
+```cpp
+#include <string>
 #include <unordered_map> // Required for std::unordered_map
 #include <iostream>      // For example usage
 

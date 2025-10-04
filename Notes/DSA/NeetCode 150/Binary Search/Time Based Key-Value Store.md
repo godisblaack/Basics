@@ -55,16 +55,16 @@ public:
  * obj->set(key,value,timestamp);
  * string param_2 = obj->get(key,timestamp);
  */
- ```
+```
 
- **Time complexity:** O(log N), where N is the number of timestamps for that key. 
+**Time complexity:** O(log N), where N is the number of timestamps for that key. 
 
- **Space complexity:** O(N), where N is the total number of pair stored.
+**Space complexity:** O(N), where N is the total number of pair stored.
 
- **Cleaner code**
+**Cleaner code**
 
- ```cpp
- class TimeMap {
+```cpp
+class TimeMap {
 public:
     unordered_map<string, vector<pair<int, string>>> timeMap;
 

@@ -3,6 +3,7 @@ Link: https://leetcode.com/problems/longest-increasing-subsequence/description/
 I was not able to solve it.
 
 **Recursion**
+
 ```cpp
 class Solution {
 public:
@@ -32,6 +33,7 @@ private:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Top-Down)**
+
 ```cpp
 class Solution {
 public:
@@ -68,6 +70,7 @@ public:
 **Space complexity:** O($n^{2}$)
 
 **Dynamic Programming (Bottom-Up)**
+
 ```cpp
 class Solution {
 public:
@@ -97,6 +100,7 @@ public:
 **Space complexity:** O($n^{2}$)
 
 **Dynamic Programming + Binary Search**
+
 ```cpp
 class Solution {
 public:

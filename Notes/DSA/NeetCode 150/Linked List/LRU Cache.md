@@ -45,16 +45,16 @@ public:
  * int param_1 = obj->get(key);
  * obj->put(key,value);
  */
- ```
+```
 
- **Time complexity:** O(N)
+**Time complexity:** O(N)
 
- **Space complexity:** O(capacity)
+**Space complexity:** O(capacity)
 
- **Better solution**
+**Better solution**
 
- ```cpp
- class LRUCache {
+```cpp
+class LRUCache {
     int cap;
     list<pair<int, int>> lru;
     unordered_map<int, list<pair<int, int>>::iterator> cache;
@@ -91,16 +91,16 @@ public:
  * int param_1 = obj->get(key);
  * obj->put(key,value);
  */
- ```
+```
 
- **Time complexity:** O(1)
+**Time complexity:** O(1)
 
- **Space complexity:** O(capacity)
+**Space complexity:** O(capacity)
 
- **Optimized solution**
+**Optimized solution**
 
- ```cpp
- class Node {
+```cpp
+class Node {
 public:
     int key, value;
     Node* prev;

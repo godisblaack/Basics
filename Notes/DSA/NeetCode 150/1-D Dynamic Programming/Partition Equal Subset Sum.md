@@ -3,6 +3,7 @@ Link: https://leetcode.com/problems/partition-equal-subset-sum/description/
 I was not able to solve it.
 
 **Recursion**
+
 ```cpp
 class Solution {
 public:
@@ -37,6 +38,7 @@ public:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Top-Down)**
+
 ```cpp
 class Solution {
 public:
@@ -77,6 +79,7 @@ public:
 **Space complexity:** O(n∗target)
 
 **Dynamic Programming (Bottom-Up)**
+
 ```cpp
 class Solution {
 public:
@@ -118,6 +121,7 @@ public:
 **Space complexity:** O(n∗target)
 
 **Dynamic Programming (Space Optimized)**
+
 ```cpp
 class Solution {
 public:
@@ -161,6 +165,7 @@ private:
 **Space complexity:** O(target)
 
 **Dynamic Programming (Optimal)**
+
 ```cpp
 class Solution {
 public:

@@ -35,6 +35,7 @@ private:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Top-Down)**
+
 ```cpp
 class Solution {
 public:
@@ -70,6 +71,7 @@ public:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Bottom-Up)**
+
 ```cpp
 class Solution {
 public:
@@ -99,6 +101,7 @@ public:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Trie)**
+
 ```cpp
 class TrieNode {
 public:

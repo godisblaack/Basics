@@ -37,6 +37,7 @@ public:
 I got **TLE** for this solution. I was **not** able to optimize it.
 
 **Recursion**
+
 ```cpp
 class Solution {
 public:
@@ -56,6 +57,7 @@ public:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Top-Down)**
+
 ```cpp
 class Solution {
 public:
@@ -78,6 +80,7 @@ public:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Bottom-Up)**
+
 ```cpp
 class Solution {
 public:
@@ -101,6 +104,7 @@ public:
 **Space complexity:** O(n)
 
 **Dynamic Programming (Space Optimized)**
+
 ```cpp
 class Solution {
 public:
@@ -123,6 +127,7 @@ public:
 **Space complexity:** O(1)
 
 **Matrix Exponentiation**
+
 ```cpp
 class Solution {
 public:
@@ -165,6 +170,7 @@ private:
 **Space complexity:** O(n)
 
 **Math**
+
 ```cpp
 class Solution {
 public:

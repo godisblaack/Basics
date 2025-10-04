@@ -43,8 +43,8 @@ public:
 
  **Optimized solution**
 
- ```cpp
- class StockSpanner {
+```cpp
+class StockSpanner {
 public:
     // Stack stores pairs: {price, span}
     // We maintain a monotonically decreasing stack of prices.

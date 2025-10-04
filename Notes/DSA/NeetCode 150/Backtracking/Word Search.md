@@ -3,11 +3,7 @@ Link: https://leetcode.com/problems/word-search/description/
 I was not able to solve it. I was not able to pass all the test cases.
 
 
-**Brute force
-
-
-
-**
+**Brute force**
 
 ```cpp
 class Solution {

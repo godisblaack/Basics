@@ -79,6 +79,7 @@ public:
 **Space complexity:** O(t)
 
 **Dynamic Programming (Top-Down)**
+
 ```cpp
 class Solution {
 public:
@@ -114,6 +115,7 @@ public:
 **Space complexity:** O(t)
 
 **Dynamic Programming (Bottom-Up)**
+
 ```cpp
 class Solution {
 public:
@@ -137,6 +139,7 @@ public:
 **Space complexity:** O(t)
 
 **Breadth First Search**
+
 ```cpp
 class Solution {
 public:

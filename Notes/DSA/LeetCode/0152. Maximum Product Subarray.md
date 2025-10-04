@@ -245,6 +245,7 @@ public:
 This is the **optimized** solution.
 
 **Brute Force**
+
 ```cpp
 class Solution {
 public:
@@ -270,6 +271,7 @@ public:
 **Space complexity:** O(1)
 
 **Sliding Window**
+
 ```cpp
 class Solution {
 public:
@@ -319,6 +321,7 @@ public:
 **Space complexity:** O(1)
 
 **Kadane's Algorithm**
+
 ```cpp
 class Solution {
 public:
@@ -342,6 +345,7 @@ public:
 **Space complexity:** O(1)
 
 **Prefix & Suffix**
+
 ```cpp
 class Solution {
 public:

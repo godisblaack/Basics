@@ -1,6 +1,7 @@
 Link: https://leetcode.com/problems/greatest-common-divisor-of-strings/description/
 
 **My 1st solution**
+
 ```cpp
 class Solution {
 public:
