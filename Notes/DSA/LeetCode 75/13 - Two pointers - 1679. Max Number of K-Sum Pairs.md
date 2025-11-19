@@ -33,7 +33,7 @@ public:
 
 **Time Complexity**: O(N log N)
 
-**Space Complexity**: O(log N)
+**Space Complexity**: O(1)
 
 This is the **optimized** solution. I did this couple of months back. The next time when I did it, I used hashmap, and in that I got stuck in a check for a very long time.
 
@@ -76,5 +76,35 @@ public:
 ```
 
 **Time Complexity**: O(N log N)
+
+**Space Complexity**: O(N)
+
+**Best solution**
+
+```cpp
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+        unordered_map<int,int> freq;
+        int count = 0;
+
+        for (int x : nums) {
+            int target = k - x;
+            if (freq[target] > 0) {
+                // Found a complement, form a pair
+                freq[target]--;
+                count++;
+            } else {
+                // Store current number
+                freq[x]++;
+            }
+        }
+
+        return count;
+    }
+};
+```
+
+**Time Complexity**: O(N)
 
 **Space Complexity**: O(N)
