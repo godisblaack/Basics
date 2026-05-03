@@ -14,22 +14,12 @@ curl -fsSL https://ollama.com/install.sh | sh
 python3 -m venv gemma_env
 source gemma_env/bin/activate
 ```
-## 4. Install project dependencies
-Put all the requirements for running your code (like all the dependencies for your .py file)  
-**Example requirements.txt**  
-```txt
-requests
-```
-Run the following command to install all the dependencies:
-```bash
-pip install -r requirements.txt
-```
 
-## 5. Pull smallest Gemma 4 model
+## 4. Pull smallest Gemma 4 model
 ```bash
 ollama pull gemma:2b
 ```
-## 6. Run interactively
+## 5. Run interactively
 ```bash
 ollama run gemma:2b
 ```
@@ -41,6 +31,11 @@ ollama run gemma:2b
 source gemma_env/bin/activate
 ```
 
+## Run interactively
+```bash
+ollama run gemma:2b
+```
+
 ## Exit
 ```bash
 # exit ollama
@@ -50,13 +45,6 @@ Ctrl+C
 
 # Close python environment
 deactivate
-```
-
-## Example
-```py
-import requests
-response = requests.post("http://localhost:11434/api/generate", json={"model":"gemma:2b","prompt":"Hello Gemma!"})
-print(response.text)
 ```
 
 # Clean up
